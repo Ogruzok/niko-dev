@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Анна Белова — фотограф</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --milk: #f6f2ec;
+    --sand: #ebe4d9;
+    --stone: #a39b91;
+    --warm: #9c8064;
+    --ink: #2a2622;
+    --muted: #7b736b;
+    --line: #ddd5c9;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Manrope', sans-serif; background: var(--milk); color: var(--ink); line-height: 1.7; font-size: 16px; }
+  h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; font-weight: 400; line-height: 1.1; }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; }
+  img { display: block; max-width: 100%; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+  .label { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--warm); font-weight: 600; }
+
+  /* Header */
+  header { position: fixed; top: 0; left: 0; right: 0; z-index: 20; transition: background .3s, color .3s, box-shadow .3s; color: #fff; }
+  header.solid { background: rgba(246,242,236,.95); color: var(--ink); backdrop-filter: blur(8px); box-shadow: 0 1px 0 var(--line); }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-style: italic; letter-spacing: .5px; }
+  .nav-links { display: flex; gap: 36px; list-style: none; align-items: center; font-size: 14px; }
+  .nav-links a { opacity: .85; transition: opacity .2s; }
+  .nav-links a:hover { opacity: 1; }
+  .nav-cta { border: 1px solid currentColor; padding: 8px 20px; border-radius: 30px; opacity: 1 !important; }
+  .burger { display: none; background: none; border: 0; color: inherit; cursor: pointer; padding: 8px; }
+  .burger span { display: block; width: 24px; height: 1.5px; background: currentColor; margin: 6px 0; }
+
+  /* Hero */
+  .hero { position: relative; height: 100vh; min-height: 560px; overflow: hidden; color: #fff; }
+  .hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 60%; transform: scale(1.04); animation: settle 2.4s ease-out forwards; }
+  @keyframes settle { to { transform: scale(1); } }
+  .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(30,24,18,.62) 0%, rgba(30,24,18,.1) 45%, rgba(30,24,18,.25) 100%); }
+  .hero-content { position: absolute; left: 0; right: 0; bottom: 64px; z-index: 1; }
+  .hero-content .container { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; }
+  .hero h1 { font-size: clamp(48px, 8vw, 112px); font-style: italic; max-width: 820px; }
+  .hero-side { max-width: 280px; font-size: 15px; opacity: .9; padding-bottom: 12px; }
+  .hero-side a { display: inline-block; margin-top: 18px; border-bottom: 1px solid rgba(255,255,255,.6); padding-bottom: 2px; }
+
+  section { padding: 120px 0; }
+  .sec-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; margin-bottom: 56px; flex-wrap: wrap; }
+  .sec-head h2 { font-size: clamp(40px, 5.5vw, 68px); margin-top: 10px; }
+  .sec-head h2 i { color: var(--warm); }
+
+  /* Portfolio */
+  .tabs { display: flex; gap: 6px; background: var(--sand); padding: 5px; border-radius: 40px; }
+  .tab { background: none; border: 0; padding: 10px 22px; border-radius: 30px; font-size: 14px; color: var(--muted); cursor: pointer; transition: .25s; }
+  .tab.active { background: var(--milk); color: var(--ink); box-shadow: 0 2px 10px rgba(42,38,34,.08); }
+  .gallery { columns: 3; column-gap: 20px; }
+  .gallery figure { break-inside: avoid; margin-bottom: 20px; overflow: hidden; cursor: zoom-in; position: relative; background: var(--sand); }
+  .gallery img { width: 100%; transition: transform .8s ease, opacity .5s; }
+  .gallery figure:hover img { transform: scale(1.03); }
+  .gallery.fade img { opacity: 0; }
+  .gallery-note { margin-top: 24px; color: var(--muted); font-size: 14px; text-align: center; }
+
+  /* About */
+  #about { background: var(--sand); }
+  .about { display: grid; grid-template-columns: .9fr 1.1fr; gap: 80px; align-items: center; }
+  .about-photo { position: relative; }
+  .about-photo img { width: 100%; aspect-ratio: 4/5; object-fit: cover; filter: grayscale(.2) contrast(.95); }
+  .about-photo .stamp { position: absolute; right: -28px; bottom: 36px; background: var(--milk); padding: 18px 24px; font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; box-shadow: 0 20px 40px rgba(42,38,34,.08); }
+  .about h2 { font-size: clamp(36px, 4.5vw, 56px); margin: 12px 0 28px; }
+  .about p { color: var(--muted); margin-bottom: 18px; max-width: 520px; }
+  .about p b { color: var(--ink); font-weight: 500; }
+  .signature { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 30px; margin-top: 28px; color: var(--ink); }
+
+  /* Formats */
+  .formats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .format { background: var(--milk); padding: 44px 36px; display: flex; flex-direction: column; transition: background .3s; }
+  .format:hover { background: #fbf8f4; }
+  .format .num { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--stone); font-size: 22px; }
+  .format h3 { font-size: 38px; margin: 10px 0 6px; }
+  .format .dur { color: var(--muted); font-size: 14px; margin-bottom: 26px; }
+  .format ul { list-style: none; display: grid; gap: 10px; margin-bottom: 36px; flex: 1; align-content: start; font-size: 15px; }
+  .format li { padding-left: 22px; position: relative; }
+  .format li::before { content: ''; position: absolute; left: 0; top: 12px; width: 10px; height: 1px; background: var(--warm); }
+  .price { font-family: 'Cormorant Garamond', serif; font-size: 40px; }
+  .price small { font-family: 'Manrope', sans-serif; font-size: 13px; color: var(--muted); margin-left: 6px; }
+  .format a { margin-top: 18px; font-size: 14px; border-bottom: 1px solid var(--ink); align-self: flex-start; padding-bottom: 2px; }
+
+  /* Process */
+  #process { padding-top: 0; }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; counter-reset: s; }
+  .step { border-top: 1px solid var(--ink); padding-top: 22px; }
+  .step::before { counter-increment: s; content: '0' counter(s); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 44px; color: var(--warm); display: block; line-height: 1; margin-bottom: 18px; }
+  .step h3 { font-size: 28px; margin-bottom: 10px; }
+  .step p { color: var(--muted); font-size: 15px; }
+
+  /* Final */
+  #contact { padding: 0; }
+  .final { display: grid; grid-template-columns: 1.15fr 1fr; min-height: 640px; }
+  .final-photo { position: relative; }
+  .final-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .final-body { background: var(--ink); color: var(--milk); padding: 80px 64px; display: flex; flex-direction: column; justify-content: center; }
+  .final-body .label { color: #c9b49b; }
+  .final-body h2 { font-size: clamp(38px, 4.5vw, 58px); margin: 14px 0 18px; font-style: italic; }
+  .final-body > p { color: #bdb4a9; margin-bottom: 34px; max-width: 420px; }
+  .messengers { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 34px; }
+  .messengers a { border: 1px solid #5a524a; padding: 12px 22px; border-radius: 30px; font-size: 14px; transition: .25s; }
+  .messengers a:hover { border-color: var(--milk); background: var(--milk); color: var(--ink); }
+  .or { font-size: 13px; color: #8e857b; margin-bottom: 16px; }
+  form { display: grid; gap: 14px; }
+  form input, form select { background: transparent; border: 0; border-bottom: 1px solid #5a524a; color: var(--milk); padding: 12px 0; font: 15px 'Manrope', sans-serif; }
+  form select option { color: var(--ink); }
+  form input::placeholder { color: #8e857b; }
+  form input:focus, form select:focus { outline: none; border-color: var(--milk); }
+  form button { margin-top: 12px; justify-self: start; background: var(--milk); color: var(--ink); border: 0; padding: 14px 32px; border-radius: 30px; font-size: 14px; font-weight: 600; cursor: pointer; transition: background .2s; }
+  form button:hover { background: #fff; }
+  .form-msg { display: none; color: #c9b49b; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 24px; }
+
+  footer { padding: 34px 0; font-size: 13px; color: var(--muted); }
+  footer .container { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+  /* Lightbox */
+  .lightbox { position: fixed; inset: 0; background: rgba(28,24,20,.94); z-index: 50; display: none; align-items: center; justify-content: center; }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 88vw; max-height: 86vh; object-fit: contain; }
+  .lb-btn { position: absolute; background: none; border: 0; color: #e8e1d6; font-size: 34px; cursor: pointer; padding: 16px; opacity: .8; }
+  .lb-btn:hover { opacity: 1; }
+  .lb-close { top: 12px; right: 18px; }
+  .lb-prev { left: 12px; top: 50%; transform: translateY(-50%); }
+  .lb-next { right: 12px; top: 50%; transform: translateY(-50%); }
+  .lb-count { position: absolute; bottom: 20px; color: #a39b91; font-size: 13px; letter-spacing: 2px; }
+
+  /* Reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .9s ease, transform .9s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } .hero img { animation: none; transform: none; } }
+
+  @media (max-width: 900px) {
+    .container { padding: 0 20px; }
+    .burger { display: block; }
+    .nav-links { position: absolute; top: 76px; left: 0; right: 0; flex-direction: column; gap: 0; align-items: stretch; background: var(--milk); color: var(--ink); max-height: 0; overflow: hidden; transition: max-height .3s; }
+    .nav-links.open { max-height: 320px; box-shadow: 0 1px 0 var(--line); }
+    .nav-links li { padding: 14px 20px; border-top: 1px solid var(--line); }
+    .nav-cta { border: 0; padding: 0; }
+    .hero-content { bottom: 40px; }
+    .hero-content .container { flex-direction: column; align-items: flex-start; }
+    .hero-side { padding-bottom: 0; }
+    section { padding: 80px 0; }
+    .gallery { columns: 2; column-gap: 12px; }
+    .gallery figure { margin-bottom: 12px; }
+    .about { grid-template-columns: 1fr; gap: 48px; }
+    .about-photo .stamp { right: 12px; bottom: -20px; }
+    .formats { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr 1fr; gap: 36px 24px; }
+    .final { grid-template-columns: 1fr; }
+    .final-photo { height: 380px; }
+    .final-body { padding: 56px 24px; }
+  }
+  @media (max-width: 480px) {
+    .tabs { width: 100%; }
+    .tab { flex: 1; padding: 10px 8px; font-size: 13px; }
+    .steps { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header id="header">
+  <div class="container nav">
+    <a href="#" class="logo">Анна Белова</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#portfolio">Портфолио</a></li>
+      <li><a href="#about">Обо мне</a></li>
+      <li><a href="#formats">Стоимость</a></li>
+      <li><a href="#contact" class="nav-cta">Записаться</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Меню"><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="hero">
+  <img src="img/hero.jpg" alt="Пара в поле на закате">
+  <div class="hero-content">
+    <div class="container">
+      <h1>Тихие кадры о&nbsp;настоящих людях</h1>
+      <div class="hero-side">
+        Портреты, пары и небольшие коммерческие съёмки. Без поз «как в каталоге» — только вы и живой свет.
+        <br><a href="#portfolio">Смотреть работы ↓</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="portfolio">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div>
+        <div class="label">Портфолио</div>
+        <h2>Избранные <i>съёмки</i></h2>
+      </div>
+      <div class="tabs" id="tabs">
+        <button class="tab active" data-set="p">Индивидуальные</button>
+        <button class="tab" data-set="c">Пары</button>
+        <button class="tab" data-set="b">Коммерческие</button>
+      </div>
+    </div>
+    <div class="gallery" id="gallery"></div>
+    <div class="gallery-note">Нажмите на фото, чтобы открыть крупно</div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container about">
+    <div class="about-photo reveal">
+      <img src="img/about.jpg" alt="Фотограф с камерой" loading="lazy">
+      <div class="stamp">8 лет за камерой</div>
+    </div>
+    <div class="reveal">
+      <div class="label">Обо мне</div>
+      <h2>Мне важно, чтобы вам было спокойно</h2>
+      <p>Большинство людей говорят «я нефотогеничный». На деле им просто неуютно перед камерой. Поэтому <b>первые 15 минут съёмки мы просто гуляем и болтаем</b> — я снимаю, когда вы уже забыли про объектив.</p>
+      <p>Не ставлю в позы и не прошу «улыбнуться». Подскажу, куда встать и что сделать с руками, а остальное — ваши настоящие эмоции.</p>
+      <div class="signature">Анна</div>
+    </div>
+  </div>
+</section>
+
+<section id="formats">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div>
+        <div class="label">Форматы и стоимость</div>
+        <h2>Выберите <i>съёмку</i></h2>
+      </div>
+    </div>
+    <div class="formats reveal">
+      <div class="format">
+        <div class="num">01</div>
+        <h3>Портрет</h3>
+        <div class="dur">1 час · одна локация</div>
+        <ul><li>Помощь с образом и местом</li><li>30 фото в авторской обработке</li><li>Готово через 7 дней</li></ul>
+        <div class="price">7 000 ₽</div>
+        <a href="#contact" data-format="Портрет">Записаться</a>
+      </div>
+      <div class="format">
+        <div class="num">02</div>
+        <h3>Пара</h3>
+        <div class="dur">1,5 часа · до двух локаций</div>
+        <ul><li>Прогулка в удобном темпе</li><li>50 фото в авторской обработке</li><li>Готово через 10 дней</li></ul>
+        <div class="price">10 000 ₽</div>
+        <a href="#contact" data-format="Пара">Записаться</a>
+      </div>
+      <div class="format">
+        <div class="num">03</div>
+        <h3>Коммерческая</h3>
+        <div class="dur">от 2 часов · студия или выезд</div>
+        <ul><li>Предметка, портреты команды, контент для бренда</li><li>Количество фото — по задаче</li><li>Права на коммерческое использование</li></ul>
+        <div class="price">от 15 000 ₽ <small>обсуждаем</small></div>
+        <a href="#contact" data-format="Коммерческая">Обсудить проект</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div>
+        <div class="label">Как проходит съёмка</div>
+        <h2>Всё <i>просто</i></h2>
+      </div>
+    </div>
+    <div class="steps reveal">
+      <div class="step"><h3>Списываемся</h3><p>Пишете в мессенджер, я отвечаю в течение дня и сверяем даты.</p></div>
+      <div class="step"><h3>Обсуждаем идею</h3><p>Подбираем место, время с красивым светом и образы. Пришлю подборку референсов.</p></div>
+      <div class="step"><h3>Снимаем</h3><p>Спокойно и без спешки. Подсказываю, как встать, — остальное получится само.</p></div>
+      <div class="step"><h3>Получаете фото</h3><p>Отбираю лучшие кадры, обрабатываю и присылаю галерею со ссылкой для скачивания.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="final">
+    <div class="final-photo"><img src="img/final.jpg" alt="Портрет девушки в мягком свете" loading="lazy"></div>
+    <div class="final-body">
+      <div class="label">Запись на съёмку</div>
+      <h2>Давайте сделаем ваши кадры</h2>
+      <p>Напишите, что хотите снять, — подскажу формат и свободные даты. Ни к чему не обязывает.</p>
+      <div class="messengers">
+        <a href="#" data-demo>Telegram</a>
+        <a href="#" data-demo>WhatsApp</a>
+      </div>
+      <div class="or">или оставьте заявку — я напишу сама</div>
+      <form id="form">
+        <input type="text" placeholder="Как вас зовут" required>
+        <input type="text" placeholder="Телефон или ник в Telegram" required>
+        <select id="formatSelect">
+          <option>Портрет</option>
+          <option>Пара</option>
+          <option>Коммерческая</option>
+          <option>Пока не знаю</option>
+        </select>
+        <button type="submit">Отправить заявку</button>
+        <div class="form-msg" id="formMsg">Спасибо! Напишу вам сегодня ✦</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <span>© 2026 Анна Белова. Демо-проект для портфолио.</span>
+    <span>Фотографии: Unsplash</span>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-label="Просмотр фото">
+  <button class="lb-btn lb-close" id="lbClose" aria-label="Закрыть">×</button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Назад">‹</button>
+  <img id="lbImg" alt="">
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Вперёд">›</button>
+  <div class="lb-count" id="lbCount"></div>
+</div>
+
+<script>
+  // Header: transparent over hero, solid after
+  const header = document.getElementById('header');
+  const onScroll = () => header.classList.toggle('solid', scrollY > innerHeight - 100);
+  addEventListener('scroll', onScroll); onScroll();
+
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => { navLinks.classList.toggle('open'); header.classList.add('solid'); });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Gallery
+  const sets = {
+    p: ['p1', 'p2', 'p3', 'p4', 'p5', 'p6'],
+    c: ['c1', 'c2', 'c3', 'c4', 'c5', 'c6'],
+    b: ['b1', 'b2', 'b3', 'b4', 'b5', 'b6'],
+  };
+  const gallery = document.getElementById('gallery');
+  let current = 'p';
+
+  function renderGallery(key) {
+    current = key;
+    gallery.innerHTML = sets[key].map((n, i) =>
+      `<figure data-i="${i}"><img src="img/${n}.jpg" alt="" loading="lazy"></figure>`).join('');
+  }
+  renderGallery('p');
+
+  document.getElementById('tabs').addEventListener('click', e => {
+    const t = e.target.closest('.tab');
+    if (!t || t.dataset.set === current) return;
+    document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+    gallery.classList.add('fade');
+    setTimeout(() => { renderGallery(t.dataset.set); requestAnimationFrame(() => gallery.classList.remove('fade')); }, 250);
+  });
+
+  // Lightbox
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  let lbIndex = 0;
+  function show(i) {
+    const list = sets[current];
+    lbIndex = (i + list.length) % list.length;
+    lbImg.src = `img/${list[lbIndex]}.jpg`;
+    document.getElementById('lbCount').textContent = `${lbIndex + 1} / ${list.length}`;
+  }
+  gallery.addEventListener('click', e => {
+    const f = e.target.closest('figure');
+    if (!f) return;
+    show(+f.dataset.i);
+    lb.classList.add('open');
+  });
+  const closeLb = () => lb.classList.remove('open');
+  document.getElementById('lbClose').onclick = closeLb;
+  document.getElementById('lbPrev').onclick = () => show(lbIndex - 1);
+  document.getElementById('lbNext').onclick = () => show(lbIndex + 1);
+  lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+  addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLb();
+    if (e.key === 'ArrowLeft') show(lbIndex - 1);
+    if (e.key === 'ArrowRight') show(lbIndex + 1);
+  });
+
+  // Format buttons preselect the form
+  const formatSelect = document.getElementById('formatSelect');
+  document.querySelectorAll('[data-format]').forEach(a => a.addEventListener('click', () => formatSelect.value = a.dataset.format));
+
+  document.querySelectorAll('[data-demo]').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    a.textContent = 'Демо: тут будет ваша ссылка';
+  }));
+
+  document.getElementById('form').addEventListener('submit', e => {
+    e.preventDefault();
+    e.target.reset();
+    document.getElementById('formMsg').style.display = 'block';
+  });
+
+  // Reveal on scroll
+  const io = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
+    entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { threshold: .12 }) : null;
+  document.querySelectorAll('.reveal').forEach(el => io ? io.observe(el) : el.classList.add('in'));
+</script>
+</body>
+</html>
