@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta name="robots" content="noindex, nofollow">
@@ -14,241 +14,170 @@
 <meta property="og:image" content="https://khomyanina.ru/img/nadezhda-hero.jpg">
 <meta name="format-detection" content="telephone=no">
 <link rel="icon" href="../img/favicon.png" type="image/png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-html { scroll-behavior: smooth; } body { margin: 0; background: #faf6f1; color: #2b231e; font-family: 'Manrope', sans-serif; -webkit-font-smoothing: antialiased; }
-img { max-width: 100%; display: block; }
-
-.kh-bar { position: absolute; z-index: 50; top: 20px; left: 40px; right: 40px; min-height: 40px; display: flex; align-items: center; justify-content: space-between;
-  padding: 0 20px; background: #b8895a; border-radius: 0 0 20px 20px; font-family: 'Manrope', sans-serif; box-sizing: border-box; }
-.kh-bar__phone { color: #fff; font-weight: 700; font-size: 16px; text-decoration: none; }
-.kh-bar__burger { width: 40px; height: 40px; border: 0; background: none; cursor: pointer; display: grid; place-content: center; gap: 4px; padding: 0; }
-.kh-bar__burger span { display: block; width: 20px; height: 2px; background: #fff; border-radius: 1px; }
-.kh-menu__overlay { position: fixed; inset: 0; z-index: 90; background: rgba(0,0,0,.6); }
-.kh-menu { position: fixed; z-index: 100; top: 0; right: 0; bottom: 0; width: min(320px, 86vw); background: #b8895a; padding: 80px 32px 32px; box-sizing: border-box; font-family: 'Manrope', sans-serif; }
-.kh-menu ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 22px; }
-.kh-menu a { color: #fff; font-size: 16px; font-weight: 600; text-decoration: none; }
-.kh-menu a:hover { opacity: .8; }
-.kh-menu__close { position: absolute; top: 18px; right: 18px; width: 36px; height: 36px; border: 0; background: none; cursor: pointer; }
-.kh-menu__close span { position: absolute; left: 7px; top: 17px; width: 22px; height: 2px; background: #fff; border-radius: 1px; }
-.kh-menu__close span:first-child { transform: rotate(45deg); }
-.kh-menu__close span:last-child { transform: rotate(-45deg); }
-.kh-menu[hidden], .kh-menu__overlay[hidden] { display: none; }
-@media (max-width: 960px) { .kh-bar { top: 5px; left: 5px; right: 5px; } }
-.st { position: relative; overflow: hidden; padding: 120px 0 80px; background: linear-gradient(180deg, #faf6f1 0%, #f3ece3 100%); }
-.st::before { content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(700px 420px at 90% 0%, rgba(154,107,67,.12), transparent 60%), radial-gradient(600px 380px at 0% 100%, rgba(154,107,67,.08), transparent 60%); }
-.st__inner { position: relative; width: min(100% - 32px, 1200px); margin: 0 auto; }
-.st__crumbs { font-size: 14px; color: #8b7d71; margin: 0 0 18px; }
-.st__crumbs a { color: #9a6b43; text-decoration: none; }
-.st__title { font-family: 'Cormorant Garamond', sans-serif; font-weight: 700; font-size: clamp(32px, 4.4vw, 52px); line-height: 1.1; margin: 0 0 14px; letter-spacing: -.01em; }
-.st__title::after { content: ""; display: block; width: 64px; height: 4px; border-radius: 2px; background: #9a6b43; margin-top: 18px; }
-.st__lead { max-width: 640px; font-size: 18px; line-height: 1.6; color: #54473d; margin: 0 0 44px; }
-.st__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
-.st-card { background: #fff; border-radius: 22px; box-shadow: 0 1px 2px rgba(43,35,30,.05), 0 14px 36px rgba(43,35,30,.07); overflow: hidden; transition: transform .2s ease-out, box-shadow .2s ease-out; }
-.st-card__link { display: flex; flex-direction: column; height: 100%; color: inherit; text-decoration: none; }
-.st-card__img { display: block; aspect-ratio: 4 / 3; overflow: hidden; background: #f4ece2; }
-/* фото вертикальные, карточка горизонтальная: кадр прижат к верху, чтобы не резать головы (21.10) */
-.st-card__img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform .4s ease-out; }
-/* на фото «Откладывания» над головой много стены – кадр ниже, как в «Читайте также» */
-.st-card__img img[src="../img/photo4.jpg"] { object-position: center 45%; }
-.st-card__body { display: flex; flex-direction: column; gap: 8px; padding: 22px 24px 26px; flex: 1; }
-.st-card__title { font-family: 'Cormorant Garamond', sans-serif; font-weight: 700; font-size: 21px; line-height: 1.25; margin: 0; }
-.st-card__sub { font-weight: 600; color: #9a6b43; margin: 0; line-height: 1.4; }
-.st-card__descr { color: #54473d; font-size: 15px; line-height: 1.55; margin: 4px 0 0; }
-.st-card__more { margin-top: auto; padding-top: 12px; font-weight: 700; color: #9a6b43; font-size: 15px; }
-@media (hover: hover) and (pointer: fine) {
-  .st-card:hover { transform: translateY(-4px); box-shadow: 0 2px 4px rgba(43,35,30,.06), 0 22px 48px rgba(43,35,30,.12); }
-  .st-card:hover .st-card__img img { transform: scale(1.04); }
-}
-.st-card__link:focus-visible { outline: 3px solid #9a6b43; outline-offset: 3px; border-radius: 22px; }
-.st__cta { margin-top: 56px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; background: #9a6b43; color: #fff; border-radius: 22px; padding: 32px 36px; }
-.st__cta p { margin: 0; font-family: 'Cormorant Garamond', sans-serif; font-weight: 700; font-size: 22px; line-height: 1.35; max-width: 620px; }
-.st__cta a { display: inline-flex; align-items: center; min-height: 56px; padding: 0 30px; border-radius: 12px; background: #fff; color: #7a5235; font-weight: 700; text-decoration: none; }
-.st-foot { text-align: center; padding: 28px 16px 40px; font-size: 14px; color: #8b7d71; background: #f3ece3; }
-.st-foot a { color: #9a6b43; text-decoration: none; margin: 0 8px; }
-@media (max-width: 960px) { .st__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; } .st { padding-top: 90px; } }
-@media (max-width: 600px) { .st__grid { grid-template-columns: 1fr; } .st__lead { font-size: 16px; margin-bottom: 32px; } .st__cta { padding: 26px 22px; } .st__cta p { font-size: 19px; } .st__cta a { width: 100%; justify-content: center; } }
-@media (prefers-reduced-motion: reduce) { .st-card, .st-card__img img { transition: none; } }
-</style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Статьи психолога Надежды Хомяниной – о работе, выборе и опоре","url":"https://khomyanina.ru/stati","hasPart":[{"@type":"Article","headline":"Отношения с собой: почему это главное, что у нас есть","url":"https://khomyanina.ru/otnosheniya-s-soboj"},{"@type":"Article","headline":"Талант и призвание: как реализовать то, что задумано о тебе","url":"https://khomyanina.ru/talant-i-prizvanie"},{"@type":"Article","headline":"Труд как ценность: почему важно быть нужным","url":"https://khomyanina.ru/trud-kak-cennost"},{"@type":"Article","headline":"Вера как опора: где искать силы, когда всё рушится","url":"https://khomyanina.ru/vera-kak-opora"},{"@type":"Article","headline":"Смысл не находят — его создают: почему поиск призвания заводит в тупик","url":"https://khomyanina.ru/smysl-ne-nahodyat"},{"@type":"Article","headline":"Партнёрство: когда 1+1=11 — сила синергии и как найти своего партнёра","url":"https://khomyanina.ru/partnerstvo-1-1-11"},{"@type":"Article","headline":"Ценности как компас: на что опираться, чтобы принимать верные решения","url":"https://khomyanina.ru/cennosti-kak-kompas"},{"@type":"Article","headline":"Откладывание важных решений: почему мы не решаемся и что делать","url":"https://khomyanina.ru/otkladyvanie-vazhnyh-reshenij"},{"@type":"Article","headline":"Кто ты без работы: кризис идентичности, когда профессия перестаёт быть опорой","url":"https://khomyanina.ru/kto-ty-bez-raboty"},{"@type":"Article","headline":"Парадокс выбора: почему изобилие возможностей мешает решиться","url":"https://khomyanina.ru/paradoks-vybora"},{"@type":"Article","headline":"Успех без радости: почему достижения не приносят счастья","url":"https://khomyanina.ru/uspekh-bez-radosti"}]}</script>
-<style id="theme-warm">
-html, body { font-variant-numeric: lining-nums; }
-.st__title { font-family: 'Cormorant Garamond', serif !important; font-weight: 600 !important; letter-spacing: -.3px; }
-.st-card__title { font-family: 'Cormorant Garamond', serif !important; font-weight: 600 !important; font-size: clamp(22px, 2vw, 25px) !important; line-height: 1.15 !important; }
-.st-card__sub { font-family: 'Cormorant Garamond', serif !important; font-style: italic; font-weight: 500 !important; font-size: 18px !important; }
-.st-card__img img { object-position: center 22%; }
-.kh-bar__links { display: flex; gap: 26px; margin-left: auto; margin-right: 18px; }
-.kh-bar__links a { color: inherit; text-decoration: none; font-size: 15px; font-weight: 500; opacity: .92; }
-.kh-bar__links a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
-@media (max-width: 760px) { .kh-bar__hide-m { display: none; } .kh-bar__links { margin-right: 12px; } }
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ivory: #f5efe6; --paper: #fbf7f1; --sand: #e9dfd1; --taupe: #b6a28b; --caramel: #9a6b43; --gold: #d6b384;
+  --espresso: #241c17; --ink: #2a221d; --ink-2: #57493f; --muted: #8a7c70; --line: #ddd1c1;
+  --serif: 'Cormorant Garamond', Georgia, serif; --sans: 'Manrope', system-ui, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--ivory); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.65; font-variant-numeric: lining-nums; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+.wrap { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+.kicker { font-size: 11px; letter-spacing: 3.5px; text-transform: uppercase; font-weight: 700; color: var(--caramel); }
+.btn { display: inline-flex; align-items: center; gap: 12px; padding: 16px 28px; border-radius: 60px; font: 600 15px var(--sans); text-decoration: none; cursor: pointer; border: 0; transition: background .25s, color .25s, transform .25s; }
+.btn--dark { background: var(--espresso); color: var(--ivory); }
+.btn--dark:hover { background: var(--caramel); transform: translateY(-2px); }
+.btn--light { background: var(--ivory); color: var(--espresso); }
+.btn--light:hover { background: var(--gold); }
+
+/* Шапка */
+.hdr { position: sticky; top: 0; z-index: 40; background: rgba(245,239,230,.94); backdrop-filter: blur(10px); box-shadow: 0 1px 0 var(--line); }
+.hdr__in { display: flex; align-items: center; gap: 30px; height: 66px; }
+.logo { font-family: var(--serif); font-style: italic; font-size: 22px; text-decoration: none; white-space: nowrap; }
+.nav { display: flex; gap: 26px; margin-left: auto; }
+.nav a { text-decoration: none; font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-2); }
+.nav a:hover, .nav a.on { color: var(--caramel); }
+.hdr .btn { padding: 10px 20px; font-size: 13px; }
+.burger { display: none; background: none; border: 0; cursor: pointer; padding: 8px; margin-left: auto; }
+.burger span { display: block; width: 26px; height: 1.5px; background: var(--ink); margin: 7px 0; }
+.mnav { position: fixed; inset: 0; z-index: 60; background: var(--espresso); color: var(--ivory); display: flex; flex-direction: column; justify-content: center; padding: 40px 28px; transform: translateY(-100%); transition: transform .45s cubic-bezier(.7,0,.2,1); }
+.mnav.open { transform: none; }
+.mnav a { font-family: var(--serif); font-size: 38px; text-decoration: none; line-height: 1.45; }
+.mnav__close { position: absolute; top: 18px; right: 22px; background: none; border: 0; color: var(--ivory); font-size: 40px; cursor: pointer; }
+
+/* Подвал */
+.ftr { background: #1b1511; color: rgba(245,239,230,.7); padding: 56px 0 36px; font-size: 14px; }
+.ftr__mast { font-family: var(--serif); font-size: clamp(54px, 9vw, 130px); line-height: .9; color: var(--ivory); letter-spacing: -.03em; text-decoration: none; display: inline-block; }
+.ftr__row { display: flex; justify-content: space-between; gap: 30px; flex-wrap: wrap; padding: 30px 0; margin-top: 20px; border-top: 1px solid rgba(245,239,230,.12); border-bottom: 1px solid rgba(245,239,230,.12); }
+.ftr__row a { text-decoration: none; color: var(--ivory); }
+.social { display: flex; gap: 10px; flex-wrap: wrap; }
+.social a { padding: 9px 18px; border: 1px solid rgba(245,239,230,.25); border-radius: 30px; font-size: 14px; transition: background .2s, color .2s; }
+.social a:hover { background: var(--ivory); color: var(--espresso); }
+.ftr__bot { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding-top: 22px; font-size: 13px; }
+.ftr__bot a { text-decoration: none; margin-left: 20px; }
+
+@media (max-width: 1000px) { .nav { display: none; } .hdr .btn { margin-left: auto; } }
+@media (max-width: 760px) {
+  .wrap { padding: 0 20px; }
+  .hdr .btn { display: none; }
+  .burger { display: block; }
+}
+
+.st-cover { padding: 46px 0 40px; }
+.st-meta { display: flex; justify-content: space-between; gap: 20px; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; font-weight: 700; padding-bottom: 12px; border-bottom: 1px solid var(--ink); }
+.st-meta a { color: var(--caramel); text-decoration: none; }
+.st-mast { font-family: var(--serif); font-weight: 500; font-size: clamp(90px, 17vw, 240px); line-height: .82; letter-spacing: -.035em; margin: 26px 0 18px; }
+.st-mast i { color: var(--caramel); }
+.st-lead { font-family: var(--serif); font-style: italic; font-size: clamp(22px, 2.2vw, 30px); line-height: 1.3; color: var(--ink-2); max-width: 760px; }
+.st-feat { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; text-decoration: none; padding: 60px 0 90px; border-bottom: 1px solid var(--ink); }
+.st-feat__img { background: var(--paper); padding: 10px; transform: rotate(-1.8deg); box-shadow: 0 40px 80px -30px rgba(36,28,23,.5); transition: transform 1s; }
+.st-feat:hover .st-feat__img { transform: rotate(0); }
+.st-feat__img img { width: 100%; aspect-ratio: 5 / 4; object-fit: cover; object-position: center 25%; }
+.st-feat h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(40px, 4.6vw, 70px); line-height: 1; margin: 16px 0; }
+.st-feat__sub { font-family: var(--serif); font-style: italic; font-size: 26px; line-height: 1.3; color: var(--caramel); }
+.st-feat__d { color: var(--ink-2); font-size: 17px; margin: 18px 0 28px; max-width: 520px; }
+.st-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px 36px; padding: 80px 0 120px; }
+.st-item { text-decoration: none; display: grid; gap: 12px; align-content: start; }
+.st-item__img { overflow: hidden; }
+.st-item__img img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 22%; transition: transform .8s; }
+.st-item:hover .st-item__img img { transform: scale(1.04); }
+.st-item__n { display: flex; justify-content: space-between; border-top: 1px solid var(--ink); padding-top: 10px; }
+.st-item__go { font-family: var(--serif); font-style: italic; color: var(--muted); }
+.st-item h2 { font-family: var(--serif); font-weight: 500; font-size: 30px; line-height: 1.06; }
+.st-item__sub { font-family: var(--serif); font-style: italic; font-size: 20px; line-height: 1.3; color: var(--caramel); }
+.st-item__d { font-size: 15px; color: var(--ink-2); }
+.st-item:nth-child(3n+2) { margin-top: 70px; }
+.st-cta { background: var(--espresso); color: var(--ivory); padding: 100px 0; text-align: center; }
+.st-cta p { font-family: var(--serif); font-size: clamp(32px, 4vw, 56px); line-height: 1.1; max-width: 860px; margin: 0 auto 34px; }
+.st-cta p i { color: var(--gold); }
+@media (max-width: 900px) {
+  .st-meta span:nth-child(2) { display: none; }
+  .st-mast { font-size: 25vw; }
+  .st-feat { grid-template-columns: 1fr; gap: 34px; padding: 40px 0 60px; }
+  .st-grid { grid-template-columns: 1fr; gap: 50px; padding: 50px 0 80px; }
+  .st-item:nth-child(3n+2) { margin-top: 0; }
+  .st-cta { padding: 70px 0; }
+}
 </style>
 </head>
 <body>
-
-<header class="kh-bar">
-  <a class="kh-bar__phone" href="tel:+79032780210">+7 903 278 0210</a> <nav class="kh-bar__links" aria-label="Разделы"><a href="../">Главная</a><a href="../#about" class="kh-bar__hide-m">Обо мне</a></nav>
-  <button class="kh-bar__burger" type="button" aria-expanded="false" aria-controls="kh-menu" aria-label="Меню"><span></span><span></span><span></span></button>
+<header class="hdr">
+  <div class="wrap hdr__in">
+    <a href="../" class="logo">Надежда Хомянина</a>
+    <nav class="nav" aria-label="Разделы">
+      <a href="../#who">Для кого</a>
+      <a href="../#about">Интервью</a>
+      <a href="../#how">Подход</a>
+      <a href="../#price">Стоимость</a>
+      <a href="../stati/" class="on">Статьи</a>
+    </nav>
+    <a class="btn btn--dark" href="../#start">Записаться</a>
+    <button class="burger" id="burger" aria-label="Меню"><span></span><span></span></button>
+  </div>
 </header>
-<div class="kh-menu__overlay" hidden></div>
-<nav class="kh-menu" id="kh-menu" aria-label="Навигационное меню" hidden>
-  <button class="kh-menu__close" type="button" aria-label="Закрыть меню"><span></span><span></span></button>
-  <ul>
-    <li><a href="../">Главная</a></li>
-    <li><a href="../#rec4125604701">Для кого</a></li>
-    <li><a href="../#rec4126838701">Формат работы</a></li>
-    <li><a href="../#rec4122606101">Начать сотрудничество</a></li>
-    <li><a href="../stati/">Статьи</a></li>
-  </ul>
+<nav class="mnav" id="mnav" aria-label="Меню">
+  <button class="mnav__close" id="mnavClose" aria-label="Закрыть">×</button>
+  <a href="../">Главная</a>
+  <a href="../#who">Для кого</a>
+  <a href="../#about">Интервью</a>
+  <a href="../#how">Подход</a>
+  <a href="../#price">Стоимость</a>
+  <a href="../stati/">Статьи</a>
 </nav>
-<main class="st">
-  <div class="st__inner">
-    <p class="st__crumbs"><a href="../">Главная</a> / Статьи</p>
-    <h1 class="st__title">Статьи</h1>
-    <p class="st__lead">О работе, выборе и внутренней опоре: как принимать решения, находить своё дело и не терять себя в профессии.</p>
-    <div class="st__grid">
-    <!-- ✏️ НОВАЯ СТАТЬЯ: скопируйте первую карточку целиком – от <article class="st-card"> до </article> – и вставьте прямо под этой строкой.
-         В копии замените: адрес статьи (после слова href), имя фото (после /img/), заголовок, подзаголовок и описание. -->
-    <article class="st-card">
-      <a class="st-card__link" href="https://khomyanina.ru/otnosheniya-s-soboj" target="_blank" rel="noopener">
-        <span class="st-card__img"><img src="../img/photo11.jpg" alt="" loading="lazy" width="800" height="600"></span>
-        <span class="st-card__body">
-          <h2 class="st-card__title">Отношения с собой</h2>
-          <p class="st-card__sub">Почему это главное, что у нас есть</p>
-          <p class="st-card__descr">Почему отношения с собой важнее любых внешних? Разбираемся, как внутреннее состояние отражается на всей жизни.</p>
-          <span class="st-card__more">Читать статью</span>
-        </span>
+<main>
+  <section class="st-cover">
+    <div class="wrap">
+      <div class="st-meta"><a href="../">← Главная</a><span>Психология профессиональной реализации</span><span>11 статей</span></div>
+      <h1 class="st-mast">Стать<i>и</i></h1>
+      <p class="st-lead">О работе, выборе и внутренней опоре: как принимать решения, находить своё дело и не терять себя в профессии.</p>
+      <a class="st-feat" href="../otnosheniya-s-soboj/">
+        <div class="st-feat__img"><img src="../img/photo11.jpg" alt="" fetchpriority="high"></div>
+        <div><span class="kicker">Главная тема · № 01</span><h2>Отношения с собой</h2><p class="st-feat__sub">Почему это главное, что у нас есть</p><p class="st-feat__d">Почему отношения с собой важнее любых внешних? Разбираемся, как внутреннее состояние отражается на всей жизни.</p><span class="btn btn--dark">Читать статью</span></div>
       </a>
-    </article>
-    <article class="st-card">
-      <a class="st-card__link" href="https://khomyanina.ru/talant-i-prizvanie" target="_blank" rel="noopener">
-        <span class="st-card__img"><img src="../img/photo10.jpg" alt="" loading="lazy" width="800" height="600"></span>
-        <span class="st-card__body">
-          <h2 class="st-card__title">Талант и призвание</h2>
-          <p class="st-card__sub">Как реализовать то, что задумано о тебе</p>
-          <p class="st-card__descr">У каждого есть талант. Разбираемся, как реализовать задуманное о тебе и не гнаться за чужим успехом.</p>
-          <span class="st-card__more">Читать статью</span>
-        </span>
-      </a>
-    </article>
-    <article class="st-card">
-      <a class="st-card__link" href="https://khomyanina.ru/trud-kak-cennost" target="_blank" rel="noopener">
-        <span class="st-card__img"><img src="../img/photo9.jpg" alt="" loading="lazy" width="800" height="600"></span>
-        <span class="st-card__body">
-          <h2 class="st-card__title">Труд как ценность</h2>
-          <p class="st-card__sub">Почему важно быть нужным</p>
-          <p class="st-card__descr">Почему труд обесценен и как вернуть ему ценность? Разбираемся, что значит трудиться по-настоящему и быть нужным.</p>
-          <span class="st-card__more">Читать статью</span>
-        </span>
-      </a>
-    </article>
-    <article class="st-card">
-      <a class="st-card__link" href="https://khomyanina.ru/vera-kak-opora" target="_blank" rel="noopener">
-        <span class="st-card__img"><img src="../img/photo8.jpg" alt="" loading="lazy" width="800" height="600"></span>
-        <span class="st-card__body">
-          <h2 class="st-card__title">Вера как опора</h2>
-          <p class="st-card__sub">Где искать силы, когда всё рушится</p>
-          <p class="st-card__descr">Потеряли опору и не знаете, где взять силы? Разбираемся, как вера помогает выстоять в кризисе.</p>
-          <span class="st-card__more">Читать статью</span>
-        </span>
-      </a>
-    </article>
-    <article class="st-card">
-      <a class="st-card__link" href="https://khomyanina.ru/smysl-ne-nahodyat" target="_blank" rel="noopener">
-        <span class="st-card__img"><img src="../img/photo7.jpg" alt="" loading="lazy" width="800" height="600"></span>
-        <span class="st-card__body">
-          <h2 class="st-card__title">Смысл не находят — его создают</h2>
-          <p class="st-card__sub">Почему поиск призвания заводит в тупик</p>
-          <p class="st-card__descr">Ищете своё призвание, но не находите? Разбираемся, почему смысл не находят, а создают, и как перестать гнаться за озарением.</p>
-          <span class="st-card__more">Читать статью</span>
-        </span>
-      </a>
-    </article>
-    <article class="st-card">
-      <a class="st-card__link" href="https://khomyanina.ru/partnerstvo-1-1-11" target="_blank" rel="noopener">
-        <span class="st-card__img"><img src="../img/photo6.jpg" alt="" loading="lazy" width="800" height="600"></span>
-        <span class="st-card__body">
-          <h2 class="st-card__title">Партнёрство</h2>
-          <p class="st-card__sub">Когда 1+1=11 — сила синергии и как найти своего партнёра</p>
-          <p class="st-card__descr">Почему вместе получается больше? Разбираемся, как работает синергия в партнёрстве и что нужно, чтобы 1+1 стало 11.</p>
-          <span class="st-card__more">Читать статью</span>
-        </span>
-      </a>
-    </article>
-    <article class="st-card">
-      <a class="st-card__link" href="https://khomyanina.ru/cennosti-kak-kompas" target="_blank" rel="noopener">
-        <span class="st-card__img"><img src="../img/photo5.jpg" alt="" loading="lazy" width="800" height="600"></span>
-        <span class="st-card__body">
-          <h2 class="st-card__title">Ценности как компас</h2>
-          <p class="st-card__sub">На что опираться, чтобы принимать верные решения</p>
-          <p class="st-card__descr">Не знаете, куда двигаться? Разбираемся, как ценности становятся внутренней опорой и помогают принимать решения.</p>
-          <span class="st-card__more">Читать статью</span>
-        </span>
-      </a>
-    </article>
-    <article class="st-card">
-      <a class="st-card__link" href="https://khomyanina.ru/otkladyvanie-vazhnyh-reshenij" target="_blank" rel="noopener">
-        <span class="st-card__img"><img src="../img/photo4.jpg" alt="" loading="lazy" width="800" height="600"></span>
-        <span class="st-card__body">
-          <h2 class="st-card__title">Откладывание важных решений</h2>
-          <p class="st-card__sub">Почему мы не решаемся и что делать</p>
-          <p class="st-card__descr">Годами не можете принять важное решение? Разбираемся, почему мы откладываем перемены и как сдвинуться с места.</p>
-          <span class="st-card__more">Читать статью</span>
-        </span>
-      </a>
-    </article>
-    <article class="st-card">
-      <a class="st-card__link" href="https://khomyanina.ru/kto-ty-bez-raboty" target="_blank" rel="noopener">
-        <span class="st-card__img"><img src="../img/photo3.jpg" alt="" loading="lazy" width="800" height="600"></span>
-        <span class="st-card__body">
-          <h2 class="st-card__title">Кто ты без работы</h2>
-          <p class="st-card__sub">Кризис идентичности, когда профессия перестаёт быть опорой</p>
-          <p class="st-card__descr">Кто вы, если не работаете? Разбираемся, почему профессия становится главной опорой и как вернуть себе другие роли и смыслы.</p>
-          <span class="st-card__more">Читать статью</span>
-        </span>
-      </a>
-    </article>
-    <article class="st-card">
-      <a class="st-card__link" href="https://khomyanina.ru/paradoks-vybora" target="_blank" rel="noopener">
-        <span class="st-card__img"><img src="../img/photo2.jpg" alt="" loading="lazy" width="800" height="600"></span>
-        <span class="st-card__body">
-          <h2 class="st-card__title">Парадокс выбора</h2>
-          <p class="st-card__sub">Почему изобилие возможностей мешает решиться</p>
-          <p class="st-card__descr">Много вариантов, но вы не можете выбрать? Разбираем парадокс выбора: почему изобилие парализует и как принять решение.</p>
-          <span class="st-card__more">Читать статью</span>
-        </span>
-      </a>
-    </article>
-    <article class="st-card">
-      <a class="st-card__link" href="https://khomyanina.ru/uspekh-bez-radosti" target="_blank" rel="noopener">
-        <span class="st-card__img"><img src="../img/photo1.jpg" alt="" loading="lazy" width="800" height="600"></span>
-        <span class="st-card__body">
-          <h2 class="st-card__title">Успех без радости</h2>
-          <p class="st-card__sub">Почему достижения не приносят счастья</p>
-          <p class="st-card__descr">Чувствуете пустоту, достигнув цели? Разбираемся, почему успех не приносит радости и что с этим делать.</p>
-          <span class="st-card__more">Читать статью</span>
-        </span>
-      </a>
-    </article>
+      <div class="st-grid">
+      <a class="st-item" href="../talant-i-prizvanie/"><div class="st-item__img"><img src="../img/photo10.jpg" alt="" loading="lazy"></div><div class="st-item__n"><span class="kicker">№ 02</span><span class="st-item__go">читать →</span></div><h2>Талант и призвание</h2><p class="st-item__sub">Как реализовать то, что задумано о тебе</p><p class="st-item__d">У каждого есть талант. Разбираемся, как реализовать задуманное о тебе и не гнаться за чужим успехом.</p></a>
+      <a class="st-item" href="../trud-kak-cennost/"><div class="st-item__img"><img src="../img/photo9.jpg" alt="" loading="lazy"></div><div class="st-item__n"><span class="kicker">№ 03</span><span class="st-item__go">читать →</span></div><h2>Труд как ценность</h2><p class="st-item__sub">Почему важно быть нужным</p><p class="st-item__d">Почему труд обесценен и как вернуть ему ценность? Разбираемся, что значит трудиться по-настоящему и быть нужным.</p></a>
+      <a class="st-item" href="../vera-kak-opora/"><div class="st-item__img"><img src="../img/photo8.jpg" alt="" loading="lazy"></div><div class="st-item__n"><span class="kicker">№ 04</span><span class="st-item__go">читать →</span></div><h2>Вера как опора</h2><p class="st-item__sub">Где искать силы, когда всё рушится</p><p class="st-item__d">Потеряли опору и не знаете, где взять силы? Разбираемся, как вера помогает выстоять в кризисе.</p></a>
+      <a class="st-item" href="../smysl-ne-nahodyat/"><div class="st-item__img"><img src="../img/photo7.jpg" alt="" loading="lazy"></div><div class="st-item__n"><span class="kicker">№ 05</span><span class="st-item__go">читать →</span></div><h2>Смысл не находят — его создают</h2><p class="st-item__sub">Почему поиск призвания заводит в тупик</p><p class="st-item__d">Ищете своё призвание, но не находите? Разбираемся, почему смысл не находят, а создают, и как перестать гнаться за озарением.</p></a>
+      <a class="st-item" href="../partnerstvo-1-1-11/"><div class="st-item__img"><img src="../img/photo6.jpg" alt="" loading="lazy"></div><div class="st-item__n"><span class="kicker">№ 06</span><span class="st-item__go">читать →</span></div><h2>Партнёрство</h2><p class="st-item__sub">Когда 1+1=11 — сила синергии и как найти своего партнёра</p><p class="st-item__d">Почему вместе получается больше? Разбираемся, как работает синергия в партнёрстве и что нужно, чтобы 1+1 стало 11.</p></a>
+      <a class="st-item" href="../cennosti-kak-kompas/"><div class="st-item__img"><img src="../img/photo5.jpg" alt="" loading="lazy"></div><div class="st-item__n"><span class="kicker">№ 07</span><span class="st-item__go">читать →</span></div><h2>Ценности как компас</h2><p class="st-item__sub">На что опираться, чтобы принимать верные решения</p><p class="st-item__d">Не знаете, куда двигаться? Разбираемся, как ценности становятся внутренней опорой и помогают принимать решения.</p></a>
+      <a class="st-item" href="../otkladyvanie-vazhnyh-reshenij/"><div class="st-item__img"><img src="../img/photo4.jpg" alt="" loading="lazy"></div><div class="st-item__n"><span class="kicker">№ 08</span><span class="st-item__go">читать →</span></div><h2>Откладывание важных решений</h2><p class="st-item__sub">Почему мы не решаемся и что делать</p><p class="st-item__d">Годами не можете принять важное решение? Разбираемся, почему мы откладываем перемены и как сдвинуться с места.</p></a>
+      <a class="st-item" href="../kto-ty-bez-raboty/"><div class="st-item__img"><img src="../img/photo3.jpg" alt="" loading="lazy"></div><div class="st-item__n"><span class="kicker">№ 09</span><span class="st-item__go">читать →</span></div><h2>Кто ты без работы</h2><p class="st-item__sub">Кризис идентичности, когда профессия перестаёт быть опорой</p><p class="st-item__d">Кто вы, если не работаете? Разбираемся, почему профессия становится главной опорой и как вернуть себе другие роли и смыслы.</p></a>
+      <a class="st-item" href="../paradoks-vybora/"><div class="st-item__img"><img src="../img/photo2.jpg" alt="" loading="lazy"></div><div class="st-item__n"><span class="kicker">№ 10</span><span class="st-item__go">читать →</span></div><h2>Парадокс выбора</h2><p class="st-item__sub">Почему изобилие возможностей мешает решиться</p><p class="st-item__d">Много вариантов, но вы не можете выбрать? Разбираем парадокс выбора: почему изобилие парализует и как принять решение.</p></a>
+      <a class="st-item" href="../uspekh-bez-radosti/"><div class="st-item__img"><img src="../img/photo1.jpg" alt="" loading="lazy"></div><div class="st-item__n"><span class="kicker">№ 11</span><span class="st-item__go">читать →</span></div><h2>Успех без радости</h2><p class="st-item__sub">Почему достижения не приносят счастья</p><p class="st-item__d">Чувствуете пустоту, достигнув цели? Разбираемся, почему успех не приносит радости и что с этим делать.</p></a>
+      </div>
     </div>
-    <div class="st__cta">
-      <p>Узнали себя в какой-то из статей? Разберём вашу ситуацию на диагностической встрече.</p>
-      <a href="../#rec4122606101">Записаться на консультацию</a>
+  </section>
+  <section class="st-cta"><div class="wrap"><p>Хотите разобраться в своей ситуации <i>лично</i>?</p><a class="btn btn--light" href="../#start">Записаться на диагностику</a></div></section>
+</main>
+<footer class="ftr">
+  <div class="wrap">
+    <a class="ftr__mast" href="../">Хомянина</a>
+    <div class="ftr__row">
+      <span>Психолог по профессиональной реализации · Москва и онлайн</span>
+      <span><a href="tel:+79032780210">+7 903 278 02 10</a> · <a href="mailto:sch-geisha@yandex.ru">sch-geisha@yandex.ru</a></span>
+      <div class="social" aria-label="Соцсети"><a href="#" data-todo="tenchat" target="_blank" rel="noopener">TenChat</a><a href="#" data-todo="dzen" target="_blank" rel="noopener">Дзен</a><a href="#" data-todo="vk" target="_blank" rel="noopener">ВКонтакте</a></div>
+    </div>
+    <div class="ftr__bot">
+      <span>© 2026 Хомянина Н. Н., Москва · ИНН 620601455499</span>
+      <span><a href="../policy/">Политика обработки персональных данных</a><a href="../personal/">Согласие на обработку данных</a></span>
     </div>
   </div>
-</main>
-<footer class="st-foot">© Надежда Хомянина <a href="https://khomyanina.ru/policy" target="_blank" rel="noopener">Политика конфиденциальности</a><a href="https://khomyanina.ru/personal" target="_blank" rel="noopener">Согласие на обработку данных</a></footer>
+</footer>
 <script>
 (function () {
-  var burger = document.querySelector('.kh-bar__burger'), menu = document.getElementById('kh-menu'), ov = document.querySelector('.kh-menu__overlay');
-  window.khSetMenu = function (open) { menu.hidden = !open; ov.hidden = !open; burger.setAttribute('aria-expanded', open); document.body.style.overflow = open ? 'hidden' : ''; if (open) menu.querySelector('a').focus(); };
-  burger.addEventListener('click', function () { khSetMenu(true); });
-  ov.addEventListener('click', function () { khSetMenu(false); });
-  menu.querySelector('.kh-menu__close').addEventListener('click', function () { khSetMenu(false); });
-  menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { khSetMenu(false); }); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') khSetMenu(false); });
-})();</script>
+  var m = document.getElementById('mnav');
+  var set = function (o) { m.classList.toggle('open', o); document.body.style.overflow = o ? 'hidden' : ''; };
+  document.getElementById('burger').onclick = function () { set(true); };
+  document.getElementById('mnavClose').onclick = function () { set(false); };
+  m.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { set(false); }); });
+})();
+</script>
 
 </body>
 </html>
