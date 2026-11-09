@@ -218,7 +218,7 @@ section { padding: 72px 0; }
 
 /* 8. FAQ */
 .ref__grid { display: grid; gap: 30px; }
-.ref__aside p { font-family: var(--serif); font-style: italic; font-size: 21px; color: var(--ink-2); margin-top: 16px; }
+.ref__aside p { font-family: var(--serif); font-style: italic; font-size: 21px; line-height: 1.35; color: var(--ink-2); margin-top: 16px; }
 .qa { border-bottom: 1px solid var(--line); }
 .qa:first-child { border-top: 1px solid var(--ink); }
 .qa button { width: 100%; background: none; border: 0; display: flex; justify-content: space-between; gap: 16px; align-items: center; padding: 20px 0; text-align: left; cursor: pointer; font-family: var(--serif); font-weight: 600; font-size: clamp(21px, 2vw, 26px); line-height: 1.25; }
@@ -277,6 +277,69 @@ section { padding: 72px 0; }
 .js .rv.in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { .js .rv, .js .eq .eq__g { opacity: 1; transform: none; } .marq__t, .cover__stamp, .cover__stamp span { animation: none; } html { scroll-behavior: auto; } }
 
+/* ===== Телефон ===== */
+.swipe-hint { display: none; }
+@media (max-width: 899px) {
+  section { padding: 60px 0; }
+  .sec-head { margin-bottom: 26px; }
+  /* обложка: заголовок, оффер и кнопка — на первом экране */
+  .cover { padding: 68px 0 44px; }
+  .cover__mast { font-size: 20vw; margin-top: 12px; }
+  .cover__grid { margin-top: -3.5vw; gap: 22px; position: relative; z-index: 2; }
+  .cover__photo { width: 62%; max-width: 260px; padding: 6px; }
+  .cover__stamp { width: 74px; height: 74px; right: -30px; top: 30%; font-size: 10.5px; }
+  .cover__stamp b { font-size: 24px; }
+  .cover__over { font-size: 9.5px; letter-spacing: 1.4px; white-space: nowrap; }
+  .cover h1 { font-size: 31px; margin: 8px 0 10px; }
+  .cover__offer { font-size: 18.5px; line-height: 1.32; margin-bottom: 18px; }
+  .lines { margin-top: 8px; }
+  /* кнопки во всю ширину — удобнее нажимать пальцем */
+  main .btn { width: 100%; padding: 17px 22px; }
+  .cover .btn { max-width: 340px; }
+  /* «Узнаете себя?»: номер над заголовком, текст на всю ширину */
+  .state { grid-template-columns: 1fr; gap: 6px; padding: 22px 0; }
+  .state__n { font-size: 18px; }
+  .state h3 { font-size: 29px; }
+  .state p { grid-column: auto; font-size: 15.5px; }
+  .states__final { margin-top: 34px; }
+  .states__final p { font-size: 25px; text-align: left; }
+  .iv__dek { line-height: 1.3; font-size: 21px; margin-bottom: 24px; }
+  .iv__photo img { aspect-ratio: 1 / 1.1; }
+  .method-q { font-size: 21px; }
+  .level { padding: 24px 20px; }
+  .level__no { font-size: 52px; }
+  .level h3 { font-size: 32px; }
+  /* формула крупнее */
+  .eq { padding: 40px 0 6px; }
+  .eq__g { font-size: 30vw; }
+  .eq__op { font-size: 15vw; }
+  .syn { padding: 28px 20px; }
+  .begin { margin-top: 36px; padding-top: 32px; }
+  .begin p { font-size: 20px; }
+  .res__list li { grid-template-columns: 38px 1fr; padding: 18px 0; }
+  .res__list h3 { font-size: 25px; }
+  .ticket__main { padding: 26px 20px; }
+  .ticket h3 { font-size: 32px; }
+  .ticket__sum { font-size: 48px; }
+  /* слайдер */
+  .swipe-hint { display: block; font-family: var(--serif); font-style: italic; color: var(--muted); font-size: 17px; margin-top: 10px; }
+  .track { margin-top: 20px; }
+  .letter blockquote { font-size: 21px; }
+  .qa button { font-size: 20px; padding: 18px 0; }
+  /* публикации — горизонтальная лента со свайпом */
+  .posts { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin: 26px -20px 0; padding: 0 20px 6px; scroll-padding: 0 20px; }
+  .posts::-webkit-scrollbar { display: none; }
+  .post { flex: 0 0 82%; scroll-snap-align: start; }
+  .js .posts .rv { opacity: 1; transform: none; }
+  .post__img img { aspect-ratio: 4 / 5; }
+  .post h3 { font-size: 26px; }
+  .blog__all { margin-top: 30px; }
+  /* подвал */
+  .ftr { padding-top: 40px; }
+  .social a { padding: 8px 0; }
+  .pop__title { font-size: 34px; }
+}
+@media (max-width: 359px) { .cover__over { white-space: normal; } .cover h1 { font-size: 28px; } }
 @media (min-width: 640px) {
   .slide { flex-basis: 60%; }
   .posts { grid-template-columns: 1fr 1fr; }
@@ -492,7 +555,7 @@ section { padding: 72px 0; }
             <div><dt>Для кого</dt><dd>Для тех, кто готов выстроить жесткую систему.</dd></div>
             <div><dt>Что мы выстроим</dt><dd>Стратегия, Устранение саботажа, Упаковка экспертности, Гибкость, Результат (план на 3 месяца). Поддержка в чате.</dd></div>
           </dl>
-          <div class="credit"><span class="credit__ico">!</span><span>Если вы уже прошли диагностику, её стоимость (10 000 ₽) засчитывается — <b>доплата 50 000 ₽</b>.</span></div>
+          <div class="credit"><span class="credit__ico">!</span><span>Если вы уже прошли диагностику, её стоимость (10&nbsp;000&nbsp;₽) засчитывается — <b>доплата 50&nbsp;000&nbsp;₽</b>.</span></div>
         </div>
         <div class="ticket__stub"><div class="ticket__sum">60 000 ₽</div><div class="ticket__adm">Допуск: 6 встреч</div><a class="btn btn--light" href="#popup:zayavkapsixolog">Обсудить работу</a></div>
       </article>
@@ -508,6 +571,7 @@ section { padding: 72px 0; }
       <h2 class="h2 rv">Отзывы <i>и проекты</i></h2>
       <div class="arrows"><button type="button" data-dir="-1" aria-label="Назад">←</button><button type="button" data-dir="1" aria-label="Вперёд">→</button></div>
     </div>
+    <p class="swipe-hint">Листайте →</p>
     <div class="track" id="track">
       <article class="slide letter"><p class="to">Письмо читателя</p><div class="q">“</div><blockquote>Надежда помогла разложить всё по полочкам. Получила не просто совет, а чёткий алгоритм: как продвигать себя и искать клиентов. Всё структурно, без воды. Спасибо за системный подход и уверенность в действиях!</blockquote><cite>Ольга</cite></article>
       <article class="slide letter"><p class="to">Письмо читателя</p><div class="q">“</div><blockquote>Спасибо за консультацию! Всё структурно и понятно. Наконец-то у меня есть пошаговый план: что делать первым, что вторым. Начала действовать сразу. Отдельное спасибо за пакет материалов после встречи — это экономит недели!</blockquote><cite>Юлия</cite></article>
@@ -546,6 +610,7 @@ section { padding: 72px 0; }
   <div class="wrap">
     <div class="sec-head"><span class="kicker">Рубрика · Публикации</span><span class="pg">стр. 09</span></div>
     <h2 class="h2 rv">Публикации</h2>
+    <p class="swipe-hint">Листайте →</p>
     <div class="posts">
       <a class="post rv" href="kto-ty-bez-raboty/"><div class="post__img"><img src="img/kto-ty-bez-raboty-oblozhka.jpg" alt="" loading="lazy"></div><div class="post__n"><span class="kicker">№ 01</span><span class="pg">читать →</span></div><h3>Кто ты без работы</h3><p>Кто вы, если не работаете? Разбираемся, почему профессия становится главной опорой и как вернуть себе другие роли и смыслы.</p></a>
       <a class="post rv" href="cennosti-kak-kompas/"><div class="post__img"><img src="img/cennosti-kak-kompas-oblozhka.jpg" alt="" loading="lazy"></div><div class="post__n"><span class="kicker">№ 02</span><span class="pg">читать →</span></div><h3>Ценности как компас</h3><p>Не знаете, куда двигаться? Разбираемся, как ценности становятся внутренней опорой и помогают принимать решения.</p></a>
@@ -603,7 +668,7 @@ section { padding: 72px 0; }
   var f = function () {
     h.classList.toggle('solid', scrollY > 10);
     p.classList.toggle('flat', scrollY > 60);
-    var past = scrollY > cover.offsetTop + cover.offsetHeight - 60;
+    var past = cover.querySelector('.btn').getBoundingClientRect().bottom < 60;
     var nearEnd = innerHeight + scrollY > document.documentElement.scrollHeight - 200;
     s.classList.toggle('on', past && !nearEnd);
   };
