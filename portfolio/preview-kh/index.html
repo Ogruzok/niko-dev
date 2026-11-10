@@ -42,7 +42,8 @@ section { padding: 72px 0; }
 .dark .sec-head { border-color: rgba(245,239,230,.45); }
 .dark .sec-head .kicker { color: var(--ivory); }
 .dark .pg { color: rgba(245,239,230,.55); }
-.h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(38px, 5.6vw, 80px); line-height: 1; letter-spacing: -.5px; }
+.h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(38px, 5.6vw, 80px); line-height: 1.02; letter-spacing: -.5px; }
+.h2 + .lead { margin-top: 18px; }
 .h2 i, .kw { font-style: italic; color: var(--caramel); }
 .dark .h2 i, .dark .kw { color: var(--gold); }
 .lead { font-size: 17px; color: var(--ink-2); max-width: 620px; }
@@ -96,7 +97,7 @@ section { padding: 72px 0; }
 .cover__offer { font-family: var(--serif); font-style: italic; font-size: 21px; line-height: 1.35; color: var(--ink-2); margin: 0 auto 24px; max-width: 520px; }
 .lines { display: grid; gap: 18px; }
 .line { display: grid; grid-template-columns: 44px 1fr; gap: 2px 12px; border-top: 1px solid var(--line); padding-top: 14px; }
-.line .pg { grid-row: span 2; font-size: 15px; padding-top: 3px; }
+.line .pg { grid-row: span 2; font-size: 16px; padding-top: 3px; color: var(--caramel); font-style: normal; font-weight: 700; font-family: var(--sans); }
 .line b { font-family: var(--serif); font-weight: 500; font-size: 24px; line-height: 1.1; }
 .line span:last-child { font-size: 14px; color: var(--ink-2); }
 
@@ -244,7 +245,7 @@ section { padding: 72px 0; }
 .ftr__mast { font-family: var(--serif); font-size: clamp(64px, 11vw, 130px); line-height: .9; color: var(--ivory); letter-spacing: -.03em; }
 .ftr__grid { display: grid; gap: 22px; padding: 26px 0; margin-top: 18px; border-top: 1px solid rgba(245,239,230,.14); border-bottom: 1px solid rgba(245,239,230,.14); }
 .ftr__copy b { display: block; color: var(--ivory); font-family: var(--serif); font-weight: 500; font-size: 20px; }
-.social { display: flex; flex-wrap: wrap; gap: 6px 0; }
+.social { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 0; }
 .social a { text-decoration: none; color: var(--ivory); transition: color .2s; }
 .social a:hover { color: var(--gold); }
 .social i { font-style: normal; color: rgba(245,239,230,.3); padding: 0 12px; }
@@ -342,6 +343,7 @@ section { padding: 72px 0; }
 @media (max-width: 359px) { .cover__over { white-space: normal; } .cover h1 { font-size: 28px; } }
 @media (min-width: 640px) {
   .slide { flex-basis: 60%; }
+  .post { flex-basis: 46%; }
   .posts { grid-template-columns: 1fr 1fr; }
   .ftr__grid { grid-template-columns: 1fr 1fr; }
 }
@@ -356,8 +358,9 @@ section { padding: 72px 0; }
   .cover__meta { font-size: 11px; letter-spacing: 3px; }
   .cover__meta span:nth-child(2) { display: inline; }
   .cover__mast { font-size: clamp(120px, 19vw, 262px); margin-top: 22px; }
-  .cover__grid { grid-template-columns: 1fr minmax(300px, 400px) 1fr; gap: 44px; align-items: end; margin-top: -6.5vw; position: relative; z-index: 2; }
+  .cover__grid { grid-template-columns: 1fr minmax(300px, 400px) 1fr; gap: 44px; align-items: end; margin-top: clamp(-88px, -6.5vw, -40px); position: relative; z-index: 2; }
   .cover__intro { order: -1; text-align: left; padding-bottom: 20px; }
+  .cover__over { white-space: nowrap; font-size: 10px; letter-spacing: 1.6px; }
   .cover__offer { margin-left: 0; }
   .cover__photo { width: 100%; max-width: none; transform: rotate(-2.2deg); padding: 10px; }
   .cover__stamp { width: 112px; height: 112px; right: -34px; font-size: 14px; }
@@ -372,7 +375,8 @@ section { padding: 72px 0; }
   .syn { grid-template-columns: 220px 1fr; gap: 40px; padding: 44px 48px; align-items: center; }
   .res__box { display: grid; grid-template-columns: .8fr 1.2fr; gap: 80px; }
   .res__list { margin-top: 0; }
-  .ticket { grid-template-columns: 1fr 250px; }
+  .ticket { grid-template-columns: 1fr 290px; }
+  .ticket__stub .btn { white-space: nowrap; padding: 15px 24px; font-size: 14px; }
   .ticket__main { padding: 44px 48px; -webkit-mask: radial-gradient(circle 16px at 100% 0, transparent 15px, #000 16px) top right / 100% 51% no-repeat, radial-gradient(circle 16px at 100% 100%, transparent 15px, #000 16px) bottom right / 100% 51% no-repeat; mask: radial-gradient(circle 16px at 100% 0, transparent 15px, #000 16px) top right / 100% 51% no-repeat, radial-gradient(circle 16px at 100% 100%, transparent 15px, #000 16px) bottom right / 100% 51% no-repeat; }
   .ticket__stub { border-top: 0; border-left: 2px dashed var(--line); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px 26px; -webkit-mask: radial-gradient(circle 16px at 0 0, transparent 15px, #000 16px) top left / 100% 51% no-repeat, radial-gradient(circle 16px at 0 100%, transparent 15px, #000 16px) bottom left / 100% 51% no-repeat; mask: radial-gradient(circle 16px at 0 0, transparent 15px, #000 16px) top left / 100% 51% no-repeat, radial-gradient(circle 16px at 0 100%, transparent 15px, #000 16px) bottom left / 100% 51% no-repeat; }
   .ticket dl { grid-template-columns: 1fr 1fr; gap: 20px 36px; }
@@ -388,7 +392,7 @@ section { padding: 72px 0; }
   .ftr__legal { text-align: right; }
   .sticky { display: none; }
 }
-@media (min-width: 900px) and (max-width: 1150px) { .nav { gap: 14px; } .nav a { font-size: 11px; letter-spacing: 1px; } .cover__grid { grid-template-columns: 1fr minmax(260px, 340px) 1fr; gap: 30px; } }
+@media (min-width: 900px) and (max-width: 1150px) { .cover__over { white-space: normal; }.nav { gap: 14px; } .nav a { font-size: 11px; letter-spacing: 1px; } .cover__grid { grid-template-columns: 1fr minmax(260px, 340px) 1fr; gap: 30px; } }
 </style>
 </head>
 <body>
@@ -492,10 +496,10 @@ section { padding: 72px 0; }
   <div class="wrap">
     <div class="sec-head"><span class="kicker">Рубрика · Методология</span><span class="pg">стр. 04</span></div>
     <h2 class="h2 rv">Методология: от ценностей <i>к результату</i></h2>
-    <p class="lead rv" style="margin-top:20px">В основе всего — ваши ценности. Это главная опора. Если внутри ясно, то и снаружи всё складывается. Мы работаем на двух уровнях одновременно:</p>
+    <p class="lead rv">В основе всего — ваши ценности. Это главная опора. Если внутри ясно, то и снаружи всё складывается. Мы работаем на двух уровнях одновременно:</p>
     <div class="levels">
-      <article class="level rv"><div class="level__no">01</div><p class="level__k">Уровень 01</p><h3>Внутренний</h3><p>Наводим порядок в мыслях и установках. Убираем то, что мешает двигаться вперёд.</p><p class="req"><b>Ключевые запросы:</b> тревога, синдром самозванца, страхи.</p></article>
-      <article class="level rv"><div class="level__no">02</div><p class="level__k">Уровень 02</p><h3>Внешний</h3><p>Выстраиваем карьеру и доход на прочном фундаменте, а не на страхе упустить время.</p><p class="req"><b>Ключевые запросы:</b> смена работы, повышение, рост чека.</p></article>
+      <article class="level rv"><div class="level__no">01</div><p class="level__k">Уровень</p><h3>Внутренний</h3><p>Наводим порядок в мыслях и установках. Убираем то, что мешает двигаться вперёд.</p><p class="req"><b>Ключевые запросы:</b> тревога, синдром самозванца, страхи.</p></article>
+      <article class="level rv"><div class="level__no">02</div><p class="level__k">Уровень</p><h3>Внешний</h3><p>Выстраиваем карьеру и доход на прочном фундаменте, а не на страхе упустить время.</p><p class="req"><b>Ключевые запросы:</b> смена работы, повышение, рост чека.</p></article>
     </div>
     <div class="eq" id="eq" aria-label="1 + 1 = 11"><div class="eq__row"><span class="eq__g">1</span><span class="eq__g eq__op">+</span><span class="eq__g">1</span><span class="eq__g eq__op">=</span><span class="eq__g eq__res">11</span></div></div>
     <div class="syn rv">
