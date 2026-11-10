@@ -43,7 +43,8 @@ section { padding: 72px 0; }
 .dark .sec-head .kicker { color: var(--ivory); }
 .dark .pg { color: rgba(245,239,230,.55); }
 .h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(38px, 5.6vw, 80px); line-height: 1.02; letter-spacing: -.5px; }
-.h2 + .lead { margin-top: 18px; }
+.h2 + .lead { margin-top: 22px; }
+@media (min-width: 900px) { .h2 + .lead { margin-top: 28px; } }
 .h2 i, .kw { font-style: italic; color: var(--caramel); }
 .dark .h2 i, .dark .kw { color: var(--gold); }
 .lead { font-size: 17px; color: var(--ink-2); max-width: 620px; }
@@ -393,6 +394,55 @@ section { padding: 72px 0; }
   .sticky { display: none; }
 }
 @media (min-width: 900px) and (max-width: 1150px) { .cover__over { white-space: normal; }.nav { gap: 14px; } .nav a { font-size: 11px; letter-spacing: 1px; } .cover__grid { grid-template-columns: 1fr minmax(260px, 340px) 1fr; gap: 30px; } }
+/* ===== Чистовая полировка: единые карточки, ровные элементы ===== */
+/* билеты: аккуратные вырезы цвета фона вместо масок с серыми «ушами» */
+.ticket { filter: none; border: 1px solid var(--line); box-shadow: 0 12px 24px -20px rgba(36,28,23,.45); }
+.ticket--dark { border-color: var(--espresso); }
+.ticket__main, .ticket__stub { -webkit-mask: none; mask: none; }
+.ticket__stub { position: relative; }
+.ticket__stub::before, .ticket__stub::after { content: ''; position: absolute; width: 24px; height: 24px; border-radius: 50%; background: var(--ivory); top: -13px; }
+.ticket__stub::before { left: -13px; }
+.ticket__stub::after { right: -13px; }
+/* карточки уровней: цифра слева от названия, тонкая рамка вместо размытой тени */
+.level { box-shadow: none; border: 1px solid var(--line); display: grid; grid-template-columns: 58px 1fr; column-gap: 14px; align-items: start; }
+.level__no { grid-row: 1 / span 2; font-size: 54px; line-height: .9; }
+.level__k { grid-column: 2; margin: 4px 0 2px; color: var(--muted); }
+.level h3 { grid-column: 2; margin-bottom: 0; }
+.level > p:not(.level__k), .level .req { grid-column: 1 / -1; }
+.level > p:not(.level__k):not(.req) { margin-top: 16px; }
+/* формула: знаки по центру, а не «проваливаются» вниз */
+.eq__row { align-items: center; }
+.eq__op { line-height: 1; }
+/* цитата о методе: одна коричневая черта слева вместо двойных линий */
+.method-q { border: 0; border-left: 2px solid var(--caramel); padding: 4px 0 4px 20px; }
+/* письма-отзывы: тонкая рамка, чтобы не сливались с фоном */
+.letter { border: 1px solid var(--line); box-shadow: 0 16px 34px -28px rgba(36,28,23,.4); }
+/* липкая кнопка: компактная, по центру */
+.sticky { left: 50%; right: auto; transform: translate(-50%, 160%); }
+.sticky.on { transform: translate(-50%, 0); }
+.sticky .btn { width: auto; white-space: nowrap; padding: 14px 28px; font-size: 14px; }
+
+@media (max-width: 899px) {
+  /* обложка: фото ровное и не закрывает шапку */
+  .cover__grid { margin-top: 18px; }
+  .cover__photo, .cover__photo.flat { transform: none; width: 60%; max-width: 250px; }
+  .cover__stamp { width: 70px; height: 70px; right: -26px; top: auto; bottom: 18%; }
+  .cover__stamp b { font-size: 22px; }
+  .line { grid-template-columns: 26px 1fr; }
+  .iv__photo figcaption { display: none; }
+  .level { grid-template-columns: 48px 1fr; column-gap: 12px; }
+  .level__no { font-size: 46px; }
+  .level h3 { font-size: 30px; }
+  .post__img img { aspect-ratio: 4 / 3; }
+  .ticket__stub { padding-top: 30px; }
+}
+@media (min-width: 900px) {
+  /* на ПК корешок справа: вырезы сверху и снизу разделителя */
+  .ticket__stub::before { left: -13px; top: -13px; }
+  .ticket__stub::after { left: -13px; right: auto; top: auto; bottom: -13px; }
+  .level { grid-template-columns: 70px 1fr; column-gap: 18px; }
+  .level__no { font-size: 64px; }
+}
 </style>
 </head>
 <body>
@@ -674,8 +724,18 @@ section { padding: 72px 0; }
     p.classList.toggle('flat', scrollY > 60);
     var past = cover.querySelector('.btn').getBoundingClientRect().bottom < 60;
     var nearEnd = innerHeight + scrollY > document.documentElement.scrollHeight - 200;
-    s.classList.toggle('on', past && !nearEnd);
+    s.classList.toggle('on', past && !nearEnd && visibleCta === 0);
   };
+  // липкая кнопка не показывается, когда на экране уже есть кнопка записи
+  var visibleCta = 0;
+  if ('IntersectionObserver' in window) {
+    var seen = new Set();
+    var io = new IntersectionObserver(function (en) {
+      en.forEach(function (x) { if (x.isIntersecting) seen.add(x.target); else seen.delete(x.target); });
+      visibleCta = seen.size; f();
+    }, { rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('main a[href="#popup:zayavkapsixolog"]').forEach(function (b) { io.observe(b); });
+  }
   addEventListener('scroll', f, { passive: true }); f();
 })();
 
