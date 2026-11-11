@@ -210,7 +210,7 @@ section { padding: 72px 0; }
 .letter cite { display: block; margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--line); font-style: normal; font-family: var(--serif); font-size: 26px; color: var(--caramel); }
 .case { background: var(--espresso); color: var(--ivory); padding: 30px 24px; }
 .case__no { font-family: var(--serif); font-style: italic; font-size: 48px; line-height: 1; color: var(--gold); }
-.case h3 { font-family: var(--serif); font-weight: 600; font-size: 30px; line-height: 1.05; margin: 14px 0 18px; }
+.case h3 { font-family: var(--serif); font-weight: 600; font-size: 30px; line-height: 1.05; margin: 0 0 18px; }
 .case__role { font-family: var(--serif); font-style: italic; font-size: 18px; color: rgba(245,239,230,.6); margin-bottom: 18px; }
 .case ul { list-style: none; display: grid; gap: 12px; font-size: 15px; color: rgba(245,239,230,.82); }
 .case ul b { color: var(--gold); font-weight: 700; }
@@ -420,7 +420,8 @@ section { padding: 72px 0; }
 /* липкая кнопка: компактная, по центру */
 .sticky { left: 50%; right: auto; transform: translate(-50%, 160%); }
 .sticky.on { transform: translate(-50%, 0); }
-.sticky .btn { width: auto; white-space: nowrap; padding: 14px 28px; font-size: 14px; }
+.sticky .btn { width: auto; white-space: nowrap; padding: 14px 28px; font-size: 16px; border: 1px solid rgba(214,179,132,.75); box-shadow: 0 10px 28px rgba(0,0,0,.35); }
+.sticky { bottom: calc(12px + env(safe-area-inset-bottom)); }
 
 @media (max-width: 899px) {
   /* обложка: фото ровное и не закрывает шапку */
@@ -731,10 +732,10 @@ section { padding: 72px 0; }
       <article class="slide letter"><p class="to">Письмо читателя</p><div class="q">“</div><blockquote>Надежда помогла разложить всё по полочкам. Получила не просто совет, а чёткий алгоритм: как продвигать себя и искать клиентов. Всё структурно, без воды. Спасибо за системный подход и уверенность в действиях!</blockquote><cite>Ольга</cite></article>
       <article class="slide letter"><p class="to">Письмо читателя</p><div class="q">“</div><blockquote>Спасибо за консультацию! Всё структурно и понятно. Наконец-то у меня есть пошаговый план: что делать первым, что вторым. Начала действовать сразу. Отдельное спасибо за пакет материалов после встречи — это экономит недели!</blockquote><cite>Юлия</cite></article>
       <article class="slide letter"><p class="to">Письмо читателя</p><div class="q">“</div><blockquote>Обратилась к Надежде за помощью с сайтом для запуска своего проекта. Сделали всё в срок, все пожелания учтены. Сейчас у меня успешный бизнес — Надежда стала отличным началом этого пути!</blockquote><cite>Елена Коротких</cite></article>
-      <article class="slide case"><div class="case__no">№ 01</div><h3>GetHelpers.ru</h3><ul><li><b>Задача:</b> Систематизировать идеи и разработать структуру образовательного продукта под запрос рынка.</li><li><b>Решение:</b> Провела анализ аудитории, спроектировала архитектуру и методологию курса.</li><li><b>Результат:</b> Готовая программа с подтвержденной актуальностью. Продукт укомплектован для запуска.</li></ul></article>
-      <article class="slide case"><div class="case__no">№ 02</div><h3>«Актёрская Академия»</h3><ul><li><b>Задача:</b> Создать систему для роста продукта без постоянного участия собственника.</li><li><b>Решение:</b> Переупаковала продукт, выстроила маркетинг.</li><li><b>Результат:</b> Процессы формализованы и автоматизированы.</li></ul></article>
-      <article class="slide case"><div class="case__no">№ 03</div><h3>Онлайн-школа омоложения</h3><ul><li><b>Задача:</b> Масштабировать проект и убрать ручное управление.</li><li><b>Решение:</b> Описала бизнес-процессы, разработала необходимые материалы, выстроила структуру.</li><li><b>Результат:</b> Команда сформирована, процессы работают автономно. Проект вышел на новый уровень.</li></ul></article>
-      <article class="slide case"><div class="case__no">№ 04</div><h3>Classkid</h3><ul><li><b>Задача:</b> Подготовить проект к масштабированию.</li><li><b>Решение:</b> Спроектировала партнерскую сеть и архитектуру управления.</li><li><b>Результат:</b> Процессы выстроены. Система готова к дальнейшему росту. Спикер Сколково.</li></ul></article>
+      <article class="slide case"><h3>GetHelpers.ru</h3><ul><li><b>Задача:</b> Систематизировать идеи и разработать структуру образовательного продукта под запрос рынка.</li><li><b>Решение:</b> Провела анализ аудитории, спроектировала архитектуру и методологию курса.</li><li><b>Результат:</b> Готовая программа с подтвержденной актуальностью. Продукт укомплектован для запуска.</li></ul></article>
+      <article class="slide case"><h3>«Актёрская Академия»</h3><ul><li><b>Задача:</b> Создать систему для роста продукта без постоянного участия собственника.</li><li><b>Решение:</b> Переупаковала продукт, выстроила маркетинг.</li><li><b>Результат:</b> Процессы формализованы и автоматизированы.</li></ul></article>
+      <article class="slide case"><h3>Онлайн-школа омоложения</h3><ul><li><b>Задача:</b> Масштабировать проект и убрать ручное управление.</li><li><b>Решение:</b> Описала бизнес-процессы, разработала необходимые материалы, выстроила структуру.</li><li><b>Результат:</b> Команда сформирована, процессы работают автономно. Проект вышел на новый уровень.</li></ul></article>
+      <article class="slide case"><h3>Classkid</h3><ul><li><b>Задача:</b> Подготовить проект к масштабированию.</li><li><b>Решение:</b> Спроектировала партнерскую сеть и архитектуру управления.</li><li><b>Результат:</b> Процессы выстроены. Система готова к дальнейшему росту. Спикер Сколково.</li></ul></article>
     </div>
     <div class="dots" id="dots" aria-hidden="true"></div>
   </div>
@@ -823,7 +824,10 @@ section { padding: 72px 0; }
     p.classList.toggle('flat', scrollY > 60);
     var past = cover.querySelector('.btn').getBoundingClientRect().bottom < 60;
     var nearEnd = innerHeight + scrollY > document.documentElement.scrollHeight - 200;
-    s.classList.toggle('on', past && !nearEnd && visibleCta === 0);
+    // не закрываем текст отзывов и кейсов
+    var rv = document.getElementById('reviews').getBoundingClientRect();
+    var overSlider = rv.top < innerHeight - 60 && rv.bottom > 60;
+    s.classList.toggle('on', past && !nearEnd && visibleCta === 0 && !overSlider);
   };
   // липкая кнопка не показывается, когда на экране уже есть кнопка записи
   var visibleCta = 0;
