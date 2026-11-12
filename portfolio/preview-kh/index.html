@@ -792,7 +792,7 @@ section { padding: 72px 0; }
     <div class="ftr__mast">Хомянина</div>
     <div class="ftr__grid">
       <div class="ftr__copy"><b>© Надежда Хомянина, 2026.</b>Психолог по профессиональной реализации.</div>
-      <div class="social" aria-label="Соцсети"><a href="#" data-todo="vk" target="_blank" rel="noopener">ВКонтакте ↗</a><i>|</i><a href="#" data-todo="dzen" target="_blank" rel="noopener">Дзен ↗</a><i>|</i><a href="#" data-todo="tenchat" target="_blank" rel="noopener">TenChat ↗</a></div>
+      <div class="social" aria-label="Соцсети"><a href="#" data-todo="vk">ВКонтакте ↗</a><i>|</i><a href="#" data-todo="dzen">Дзен ↗</a><i>|</i><a href="#" data-todo="tenchat">TenChat ↗</a></div>
       <div class="ftr__legal">
         <a href="mailto:sch-geisha@yandex.ru">Контактная почта: sch-geisha@yandex.ru</a>
         <a href="policy/">Политика конфиденциальности</a>
@@ -835,8 +835,8 @@ section { padding: 72px 0; }
     var past = cover.querySelector('.btn').getBoundingClientRect().bottom < 60;
     var nearEnd = innerHeight + scrollY > document.documentElement.scrollHeight - 200;
     // не закрываем текст отзывов и кейсов
-    var rv = document.getElementById('reviews').getBoundingClientRect();
-    var overSlider = rv.top < innerHeight - 60 && rv.bottom > 60;
+    // и не закрываем карточки цен — у них свои кнопки записи
+    var overSlider = ['reviews', 'start'].some(function (id) { var b = document.getElementById(id).getBoundingClientRect(); return b.top < innerHeight - 60 && b.bottom > 60; });
     s.classList.toggle('on', past && !nearEnd && visibleCta === 0 && !overSlider);
   };
   // липкая кнопка не показывается, когда на экране уже есть кнопка записи
@@ -859,6 +859,55 @@ section { padding: 72px 0; }
   document.getElementById('burger').onclick = function () { set(true); };
   document.getElementById('mnavClose').onclick = function () { set(false); };
   m.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { set(false); }); });
+})();
+
+// Переход к разделу: заголовок раздела встаёт ровно под шапку, без пустой полосы и куска предыдущего блока
+(function () {
+  var hdr = document.getElementById('hdr');
+  function pageTop(el) { var y = 0; while (el) { y += el.offsetTop; el = el.offsetParent; } return y; }
+  function target(el) {
+    var sec = el.closest('section');
+    if (!sec) return null;
+    var wrap = sec.querySelector('.wrap');
+    if (!wrap) return sec;
+    var kids = [].slice.call(wrap.children);
+    for (var i = 0; i < kids.length; i++) if (kids[i].offsetHeight > 0) return kids[i];
+    return sec;
+  }
+  // мгновенная прокрутка без влияния CSS scroll-behavior (работает и на старых iPhone)
+  function jump(y) { var r = document.documentElement, s = r.style.scrollBehavior; r.style.scrollBehavior = 'auto'; window.scrollTo(0, y); r.style.scrollBehavior = s; }
+  var anim = 0;
+  function go(hash, smooth) {
+    var el = hash && hash.length > 1 && document.getElementById(decodeURIComponent(hash.slice(1)));
+    if (!el) return false;
+    var t = target(el);
+    if (t) t.classList.add('in');
+    // точка пересчитывается на каждом кадре — если что-то выше догрузится, всё равно встанем ровно
+    function dest() { var gap = innerWidth < 900 ? 24 : 36; return t ? Math.min(Math.max(0, pageTop(t) - hdr.offsetHeight - gap), document.documentElement.scrollHeight - innerHeight) : 0; }
+    cancelAnimationFrame(anim);
+    if (!smooth || matchMedia('(prefers-reduced-motion: reduce)').matches) { jump(dest()); return true; }
+    var from = scrollY, dist = Math.abs(dest() - from), dur = Math.min(900, 300 + dist / 12), t0 = performance.now();
+    (function step(now) {
+      var k = Math.min(1, (now - t0) / dur), e = k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+      jump(from + (dest() - from) * e);
+      if (k < 1) anim = requestAnimationFrame(step);
+    })(t0);
+    return true;
+  }
+  // если человек сам начал листать во время перехода — не мешаем
+  ['wheel', 'touchstart'].forEach(function (ev) { addEventListener(ev, function () { cancelAnimationFrame(anim); }, { passive: true }); });
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    var h = a.getAttribute('href');
+    if (h.indexOf('#popup:') === 0) return;
+    if (h === '#') { e.preventDefault(); return; } // соцсети без ссылок пока никуда не ведут
+    if (go(h, true)) { e.preventDefault(); history.replaceState(null, '', h); }
+  });
+  // пришли со статьи по ссылке вида /#start — ставим раздел так же ровно
+  if (location.hash && location.hash.indexOf('#popup:') !== 0) {
+    addEventListener('load', function () { go(location.hash, false); setTimeout(function () { go(location.hash, false); }, 400); });
+  }
 })();
 
 // Бегущая строка
