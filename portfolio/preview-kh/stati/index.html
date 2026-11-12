@@ -66,9 +66,16 @@ a { color: inherit; }
 
 @media (max-width: 1100px) { .nav { display: none; } .hdr .btn { margin-left: auto; } }
 @media (max-width: 760px) {
+  body { font-size: 18px; }
+  .kicker { font-size: 13.5px; letter-spacing: 1.8px; }
   .wrap { padding: 0 20px; }
   .hdr .btn { display: none; }
-  .burger { display: block; }
+  .burger { display: grid; place-content: center; width: 44px; height: 44px; padding: 0; margin-right: -9px; }
+  .burger span { margin: 4px 0; }
+  .ftr, .ftr__copy, .social a, .social i, .ftr__legal a { font-size: 17px; }
+  .ftr__legal { gap: 0; }
+  .ftr__legal a, .social a { display: inline-block; padding: 9px 0; }
+  .ftr__inn { font-size: 14.5px; }
   .ftr__grid { grid-template-columns: 1fr; }
   .ftr__legal { text-align: left; }
 }
@@ -102,6 +109,10 @@ a { color: inherit; }
 .st-cta p i { color: var(--gold); }
 @media (max-width: 900px) {
   .st-meta span:nth-child(2) { display: none; }
+  .st-meta { font-size: 13px; letter-spacing: 2px; }
+  .st-meta a { display: inline-block; padding: 10px 0; }
+  .st-item__d { font-size: 17px; }
+  .st-item__sub { font-size: 21px; }
   .st-mast { font-size: 18vw; }
   .st-feat { grid-template-columns: 1fr; gap: 34px; padding: 40px 0 60px; }
   .st-grid { grid-template-columns: 1fr; gap: 50px; padding: 50px 0 80px; }
