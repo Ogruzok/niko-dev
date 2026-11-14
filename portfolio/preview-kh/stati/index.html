@@ -82,6 +82,8 @@ a { color: inherit; }
   .ftr__grid { grid-template-columns: 1fr; }
 }
 @media (min-width: 640px) and (max-width: 899px) { .ftr__grid { grid-template-columns: 1fr 1fr; } }
+/* шапка без просветов, логотип прямым начертанием */
+.hdr { background: var(--ivory); backdrop-filter: none; -webkit-backdrop-filter: none; }
 
 .st-cover { padding: 46px 0 40px; }
 .st-meta { display: flex; justify-content: space-between; gap: 20px; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; font-weight: 700; padding-bottom: 12px; border-bottom: 1px solid var(--ink); align-items: center; }
@@ -126,6 +128,12 @@ a { color: inherit; }
   .st-cta .btn { width: 100%; }
   .st-cta { padding: 70px 0; }
 }
+/* единый строгий стиль шрифтов */
+.st-lead, .st-feat__sub, .st-item__sub, .st-item__go { font-family: var(--sans); font-style: normal; }
+.st-lead { font-size: 18px; line-height: 1.6; }
+.st-feat__sub { font-size: 18px; color: var(--ink-2); }
+.st-item__sub { font-size: 16px; color: var(--muted); }
+.st-item__go { font-size: 14px; }
 </style>
 </head>
 <body>
