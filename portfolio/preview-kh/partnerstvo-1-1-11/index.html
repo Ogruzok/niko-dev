@@ -170,7 +170,8 @@ a { color: inherit; }
 }
 @media (min-width: 640px) and (max-width: 899px) { .ftr__grid { grid-template-columns: 1fr 1fr; } }
 /* шапка без просветов, логотип прямым начертанием */
-.hdr { background: var(--ivory); backdrop-filter: none; -webkit-backdrop-filter: none; }
+.hdr { background: var(--ivory); backdrop-filter: none; -webkit-backdrop-filter: none; top: -200px; margin-top: -200px; padding-top: 200px; }
+html { background: var(--ivory); }
 
 /* ===== Статья в журнальном стиле (поверх исходной разметки статьи) ===== */
 .ar { display: block; }
@@ -464,7 +465,7 @@ a { color: inherit; }
 })();
 // Переходы внутри страницы (содержание статьи, «Читать статью»): нужный блок встаёт ровно под шапку
 (function () {
-  var hdr = document.querySelector('.hdr');
+  var hdr = document.querySelector('.hdr__in');
   function pageTop(el) { var y = 0; while (el) { y += el.offsetTop; el = el.offsetParent; } return y; }
   function jump(y) { var r = document.documentElement, s = r.style.scrollBehavior; r.style.scrollBehavior = 'auto'; window.scrollTo(0, y); r.style.scrollBehavior = s; }
   var anim = 0;
