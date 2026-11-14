@@ -169,6 +169,8 @@ a { color: inherit; }
   .ftr__grid { grid-template-columns: 1fr; }
 }
 @media (min-width: 640px) and (max-width: 899px) { .ftr__grid { grid-template-columns: 1fr 1fr; } }
+/* шапка без просветов, логотип прямым начертанием */
+.hdr { background: var(--ivory); backdrop-filter: none; -webkit-backdrop-filter: none; }
 
 /* ===== Статья в журнальном стиле (поверх исходной разметки статьи) ===== */
 .ar { display: block; }
@@ -314,6 +316,13 @@ a { color: inherit; }
   .pv-hero__frame { transform: none; }
   .pv-faq { padding: 0 20px; }
 }
+/* единый строгий стиль шрифтов: заголовки прямые, подводки обычным текстом */
+.pv-hero__lead, .ar-meta time, .ar-fig figcaption, .pv-cta__line, .ar-toc li::before { font-family: var(--sans); font-style: normal; }
+.pv-hero__lead { font-size: 18px; line-height: 1.6; }
+.ar-meta time { font-size: 14px; }
+.pv-cta__line { font-size: 18px; line-height: 1.6; }
+.ar-toc li::before { font-size: 15px; font-weight: 700; padding-top: 4px; }
+.pv-art .ar-cta p { font-family: var(--sans); font-style: normal; font-size: 18px; line-height: 1.6; }
 
 </style>
 </head>
