@@ -712,7 +712,9 @@ section { padding: 72px 0; }
 }
 /* ===== Шапка без просветов и единый строгий стиль шрифтов ===== */
 .hdr { background: var(--ivory); backdrop-filter: none; -webkit-backdrop-filter: none; box-shadow: 0 1px 0 var(--line); }
-.hdr::before { content: ''; position: absolute; left: 0; right: 0; bottom: 100%; height: 200px; background: var(--ivory); }
+/* шапка одним цельным блоком уходит на 200px выше экрана: при сворачивании адресной строки Safari над ней не остаётся щели */
+.hdr { top: -200px; padding-top: 200px; }
+html { background: var(--ivory); }
 /* подводки и подписи: обычный текстовый шрифт вместо курсива */
 .cover__offer, .iv__dek, .ref__aside p, .swipe-hint, .ticket__res, .next__sub, .pg, .post__n .pg { font-family: var(--sans); font-style: normal; font-weight: 400; }
 .cover__offer { font-size: 18px; line-height: 1.6; }
@@ -1066,7 +1068,7 @@ section { padding: 72px 0; }
 
 // Переход к разделу: заголовок раздела встаёт ровно под шапку, без пустой полосы и куска предыдущего блока
 (function () {
-  var hdr = document.getElementById('hdr');
+  var hdr = document.querySelector('.hdr__in');
   function pageTop(el) { var y = 0; while (el) { y += el.offsetTop; el = el.offsetParent; } return y; }
   function target(el) {
     var sec = el.closest('section');
