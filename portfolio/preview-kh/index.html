@@ -730,15 +730,48 @@ html { background: var(--ivory); }
   .swipe-hint { font-size: 16px; }
   .ticket__res { font-size: 17.5px; }
 }
-/* «Фундамент» на телефоне: те же размеры, что в остальных блоках (H3 — 25, текст — 18), карточки друг под другом */
-@media (max-width: 719px) {
-  .fund__grid { grid-template-columns: 1fr; gap: 12px; }
-  .fund__card { display: grid; grid-template-columns: 34px 1fr; column-gap: 14px; padding: 20px 20px; align-items: start; }
-  .fund__card svg { grid-row: 1 / span 2; margin: 2px 0 0; }
-  .fund__card h3 { font-size: 25px; line-height: 1.15; }
-  .fund__tag { font-size: 13px; margin: 4px 0 0; }
-  .fund__card p { grid-column: 1 / -1; font-size: 18px; line-height: 1.6; margin-top: 12px; }
+/* ===== Доводка по ТЗ и для телефона ===== */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+a, button, summary, label { -webkit-tap-highlight-color: transparent; }
+img { -webkit-user-drag: none; }
+/* Публикации: строгие карточки — фото, заголовок 2–3 строки, анонс 1–2 строки, вся карточка кликабельна */
+.post { display: flex; flex-direction: column; gap: 0; background: var(--ivory); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; transition: border-color .2s; }
+.post:hover { border-color: var(--taupe); }
+.post__img img { aspect-ratio: 16 / 10; }
+.post h3 { padding: 20px 22px 0; margin: 0; font-weight: 600; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.post p { padding: 0; margin: 10px 22px 22px; color: var(--muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+/* Фундамент: 4 карточки по две в ряд, иконка, заголовок, короткое описание */
+.fund__card h3 { margin-bottom: 8px; }
+@media (max-width: 899px) {
+  /* без анимаций появления и вращения на телефоне — ничего не дёргается и не подгружается рывками */
+  .js .rv, .js .rv.in { opacity: 1; transform: none; transition: none; }
+  .cover__stamp, .cover__stamp span { animation: none; }
+  /* единая шкала текста: подписи капсом 13, мелкий текст 15, основной 18, кнопки 17 */
+  .kicker, .ticket__lbl, .venn__lbl, .venn__c .kicker, .letter .to, .ticket dt, .level__k, .cover__meta { font-size: 13px; letter-spacing: 1.4px; }
+  .cover__over { font-size: 14px; letter-spacing: 1.3px; }
+  .ftr__inn, .next__note, .ticket__adm, .swipe-hint, .pg, .credit__ico, .pop__check, .lead-form .pop__check { font-size: 15px; }
+  .credit, .credit b { font-size: 16px; }
+  body, p, li, dd, .lead, .get li, .ticket__res, .ticket__res--plain, .states__sub, .line span:last-child, .dossier li, .post p, .next__pts, .ftr, .ftr__copy, .social a, .ftr__legal a { font-size: 18px; }
+  .next__pts b { font-size: 18px; }
+  .btn, .hdr .btn, .ticket__stub .btn, .sticky .btn { font-size: 17px; }
+  .venn__title, .states__final p, .line b { font-size: 25px; }
+  .venn__c b, .qa button { font-size: 22px; }
+  /* отступы внутри карточек — 24 px */
+  .state, .ticket__main, .venn__out > div, .case, .post h3 { padding-left: 24px; padding-right: 24px; }
+  .state, .case { padding-top: 24px; padding-bottom: 24px; }
+  .ticket__main { padding-top: 24px; }
+  .post p { margin: 10px 24px 24px; }
+  .line { padding: 20px; }
+  /* Фундамент: две карточки в ряд, описание 15 px */
+  .fund__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .fund__card { padding: 18px 14px; min-width: 0; }
+  .fund__card svg { width: 28px; height: 28px; margin-bottom: 10px; }
+  .fund__card h3 { font-size: clamp(17px, 5vw, 21px); line-height: 1.15; }
+  .fund__card p { font-size: 15px; line-height: 1.5; -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word; }
+  .post p { font-size: 17px; }
+  .letter blockquote, .method-q, .voices__q { font-size: 23px; }
 }
+
 </style>
 </head>
 <body>
@@ -841,10 +874,10 @@ html { background: var(--ivory); }
   <div class="wrap">
     <h2 class="h2 rv">Мой профессиональный <i>фундамент</i></h2>
     <div class="fund__grid">
-      <article class="fund__card rv"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="15" r="5"/><path d="M9.2 10.8 6.5 3h11l-2.7 7.8"/></svg><h3>Офицер</h3><span class="fund__tag">Военный вуз</span><p>Красный диплом. Дисциплина, системность, стрессоустойчивость.</p></article>
-      <article class="fund__card rv"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 20V11M12 20V4M19 20v-6M2 20h20"/></svg><h3>Управление</h3><span class="fund__tag">MBA</span><p>Проектное управление, стратегия, ресурсы, цели.</p></article>
-      <article class="fund__card rv"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v18M7 21h10M5 7h14M5 7l-3 7a3 3 0 0 0 6 0L5 7zM19 7l-3 7a3 3 0 0 0 6 0l-3-7z"/></svg><h3>Юриспруденция</h3><span class="fund__tag">Право</span><p>Знание законов, медиация, защита интересов.</p></article>
-      <article class="fund__card rv"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10A4.2 4.2 0 0 1 12 7.4 4.2 4.2 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"/></svg><h3>Психология</h3><span class="fund__tag">Практика</span><p>Эмпатия, работа с барьерами, поддержка.</p></article>
+      <article class="fund__card rv"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="15" r="5"/><path d="M9.2 10.8 6.5 3h11l-2.7 7.8"/></svg><h3>Офицер</h3><p>Военный вуз, красный диплом. Дисциплина, системность, стрессо&shy;устойчивость.</p></article>
+      <article class="fund__card rv"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 20V11M12 20V4M19 20v-6M2 20h20"/></svg><h3>Управление</h3><p>MBA. Проектное управление, стратегия, ресурсы, цели.</p></article>
+      <article class="fund__card rv"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v18M7 21h10M5 7h14M5 7l-3 7a3 3 0 0 0 6 0L5 7zM19 7l-3 7a3 3 0 0 0 6 0l-3-7z"/></svg><h3>Юриспруденция</h3><p>Знание законов, медиация, защита интересов.</p></article>
+      <article class="fund__card rv"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10A4.2 4.2 0 0 1 12 7.4 4.2 4.2 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"/></svg><h3>Психология</h3><p>Эмпатия, работа с барьерами, поддержка.</p></article>
     </div>
     <p class="fund__sum rv">Управленческая система + юридические границы + офицерский стержень + психологическая глубина. <b>Это мой инструментарий, который я использую для вашего результата.</b></p>
   </div>
@@ -876,7 +909,7 @@ html { background: var(--ivory); }
     <div class="tickets">
       <article class="ticket rv">
         <div class="ticket__main">
-          <div class="ticket__img"><img src="img/mag-desk.jpg" alt="Диагностическая встреча с Надеждой Хомяниной" loading="lazy"></div>
+          <div class="ticket__img"><img src="img/mag-desk.jpg" alt="Диагностическая встреча с Надеждой Хомяниной" width="900" height="1600" loading="lazy" decoding="async"></div>
           <div class="ticket__head"><span class="kicker">Первый шаг</span></div>
           <h3>Диагностическая встреча</h3>
           <p class="ticket__lbl">Что вы получите</p>
@@ -893,7 +926,7 @@ html { background: var(--ivory); }
       </article>
       <article class="ticket ticket--dark rv">
         <div class="ticket__main">
-          <div class="ticket__img"><img src="img/mag-street.jpg" alt="Индивидуальное сопровождение" loading="lazy"></div>
+          <div class="ticket__img"><img src="img/mag-street.jpg" alt="Индивидуальное сопровождение" width="1400" height="1050" loading="lazy" decoding="async"></div>
           <div class="ticket__head"><span class="kicker">Работа до результата</span></div>
           <h3>Индивидуальное сопровождение</h3>
           <p class="ticket__lbl">Что входит в работу</p>
@@ -960,9 +993,9 @@ html { background: var(--ivory); }
   <div class="wrap">
     <h2 class="h2 rv">Публикации</h2>
     <div class="posts">
-      <a class="post rv" href="kto-ty-bez-raboty/"><div class="post__img"><img src="img/kto-ty-bez-raboty-oblozhka.jpg" alt="" loading="lazy"></div><div class="post__n"><span class="kicker">№ 01</span><span class="pg">читать →</span></div><h3>Кто ты без работы</h3><p>Кто вы, если не работаете? Разбираемся, почему профессия становится главной опорой и как вернуть себе другие роли и смыслы.</p></a>
-      <a class="post rv" href="cennosti-kak-kompas/"><div class="post__img"><img src="img/cennosti-kak-kompas-oblozhka.jpg" alt="" loading="lazy"></div><div class="post__n"><span class="kicker">№ 02</span><span class="pg">читать →</span></div><h3>Ценности как компас</h3><p>Не знаете, куда двигаться? Разбираемся, как ценности становятся внутренней опорой и помогают принимать решения.</p></a>
-      <a class="post rv" href="paradoks-vybora/"><div class="post__img"><img src="img/paradoks-vybora-oblozhka.jpg" alt="" loading="lazy"></div><div class="post__n"><span class="kicker">№ 03</span><span class="pg">читать →</span></div><h3>Парадокс выбора</h3><p>Много вариантов, но вы не можете выбрать? Разбираем парадокс выбора: почему изобилие парализует и как принять решение.</p></a>
+      <a class="post rv" href="kto-ty-bez-raboty/"><div class="post__img"><img src="img/kto-ty-bez-raboty-oblozhka.jpg" alt="" width="800" height="600" loading="lazy" decoding="async"></div><h3>Кто ты без работы</h3><p>Кто вы, если не работаете? Разбираемся, почему профессия становится главной опорой и как вернуть себе другие роли и смыслы.</p></a>
+      <a class="post rv" href="cennosti-kak-kompas/"><div class="post__img"><img src="img/cennosti-kak-kompas-oblozhka.jpg" alt="" width="800" height="600" loading="lazy" decoding="async"></div><h3>Ценности как компас</h3><p>Не знаете, куда двигаться? Разбираемся, как ценности становятся внутренней опорой и помогают принимать решения.</p></a>
+      <a class="post rv" href="paradoks-vybora/"><div class="post__img"><img src="img/paradoks-vybora-oblozhka.jpg" alt="" width="800" height="600" loading="lazy" decoding="async"></div><h3>Парадокс выбора</h3><p>Много вариантов, но вы не можете выбрать? Разбираем парадокс выбора: почему изобилие парализует и как принять решение.</p></a>
     </div>
     <div class="blog__all"><a class="btn btn--line" href="stati/">Все публикации</a></div>
   </div>
@@ -970,7 +1003,7 @@ html { background: var(--ivory); }
 
 <!-- 10. Форма заявки -->
 <section class="next" id="zayavka">
-  <img src="img/final-2026.jpg" alt="" loading="lazy">
+  <img src="img/final-2026.jpg" alt="" width="1000" height="1333" loading="lazy" decoding="async">
   <div class="next__in">
     <div class="wrap">
       <h2 class="h2 rv">Следующий выпуск — <i>о&nbsp;вас</i></h2>
@@ -1063,7 +1096,7 @@ html { background: var(--ivory); }
     }, { rootMargin: '0px 0px -60px 0px' });
     document.querySelectorAll('main a[href="#popup:zayavkapsixolog"]').forEach(function (b) { io.observe(b); });
   }
-  addEventListener('scroll', f, { passive: true }); f();
+  var raf = 0; addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(function () { raf = 0; f(); }); }, { passive: true }); f();
 })();
 
 // Мобильное меню
