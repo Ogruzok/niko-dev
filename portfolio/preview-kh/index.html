@@ -779,6 +779,9 @@ img { -webkit-user-drag: none; }
 .sticky .btn { pointer-events: auto; box-shadow: none; border: 1px solid rgba(214,179,132,.55); transform: none; }
 .sticky .btn:hover { transform: none; }
 @media (min-width: 900px) { .sticky { display: none; } }
+/* Липкая кнопка: появляется мягко (плавно всплывает), исчезает быстро */
+.sticky { opacity: 0; visibility: hidden; transform: translate3d(0, 14px, 0); transition: opacity .1s linear, transform .1s linear, visibility 0s linear .1s; }
+.sticky.on { opacity: 1; visibility: visible; transform: translate3d(0, 0, 0); transition: opacity .55s cubic-bezier(.2,.7,.2,1), transform .55s cubic-bezier(.2,.7,.2,1); }
 </style>
 </head>
 <body>
@@ -1086,30 +1089,22 @@ img { -webkit-user-drag: none; }
     p.classList.toggle('flat', scrollY > 60);
     var past = cover.querySelector('.btn').getBoundingClientRect().bottom < 60;
     var nearEnd = innerHeight + scrollY > document.documentElement.scrollHeight - 200;
-    // не закрываем текст отзывов и кейсов
-    // и не закрываем карточки цен — у них свои кнопки записи
-    var overSlider = ['reviews', 'start', 'zayavka'].some(function (id) { var b = document.getElementById(id).getBoundingClientRect(); return b.top < innerHeight - 60 && b.bottom > 60; });
+    // не закрываем отзывы и кейсы, карточки цен и форму — у них свои кнопки записи
+    var overSlider = ['reviews', 'start', 'zayavka'].some(function (id) { var b = document.getElementById(id).getBoundingClientRect(); return b.top < innerHeight + 80 && b.bottom > 60; });
     // и не висит поверх подвала
-    var overFooter = footer.getBoundingClientRect().top < innerHeight - 20;
-    want(past && !nearEnd && visibleCta === 0 && !overSlider && !overFooter);
+    var overFooter = footer.getBoundingClientRect().top < innerHeight + 80;
+    // другая кнопка записи на экране или вот-вот появится снизу — липкая уже спрятана, двух кнопок не бывает
+    var ctaNear = false;
+    for (var i = 0; i < ctas.length; i++) { var r = ctas[i].getBoundingClientRect(); if (r.height && r.top < innerHeight + 280 && r.bottom > -220) { ctaNear = true; break; } }
+    want(past && !nearEnd && !ctaNear && !overSlider && !overFooter);
   };
-  // показываем/прячем только если состояние держится 250 мс — кнопка не мигает при прокрутке
-  var shown = false, pending = null, timer = 0;
+  var ctas = [].slice.call(document.querySelectorAll('main a[href="#popup:zayavkapsixolog"]'));
+  // прячем сразу, а показываем, только если место свободно 400 мс подряд — без мигания при быстрой прокрутке
+  var shown = false, timer = 0;
   function want(on) {
-    if (on === shown) { clearTimeout(timer); pending = null; return; }
-    if (pending === on) return;
-    pending = on; clearTimeout(timer);
-    timer = setTimeout(function () { shown = on; pending = null; s.classList.toggle('on', on); }, 250);
-  }
-  // липкая кнопка не показывается, когда на экране уже есть кнопка записи
-  var visibleCta = 0;
-  if ('IntersectionObserver' in window) {
-    var seen = new Set();
-    var io = new IntersectionObserver(function (en) {
-      en.forEach(function (x) { if (x.isIntersecting) seen.add(x.target); else seen.delete(x.target); });
-      visibleCta = seen.size; f();
-    }, { rootMargin: '0px 0px -60px 0px' });
-    document.querySelectorAll('main a[href="#popup:zayavkapsixolog"]').forEach(function (b) { io.observe(b); });
+    if (!on) { clearTimeout(timer); timer = 0; if (shown) { shown = false; s.classList.remove('on'); } return; }
+    if (shown || timer) return;
+    timer = setTimeout(function () { timer = 0; shown = true; s.classList.add('on'); }, 400);
   }
   var raf = 0; addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(function () { raf = 0; f(); }); }, { passive: true }); f();
 })();
