@@ -772,6 +772,13 @@ img { -webkit-user-drag: none; }
   .letter blockquote, .method-q, .voices__q { font-size: 23px; }
 }
 
+/* Липкая кнопка: без тени, плавное появление без сдвига, отдельный слой — не дёргается при прокрутке и при скрытии панели Safari */
+.sticky, .sticky.on { left: 16px; right: 16px; transform: translateZ(0); -webkit-transform: translateZ(0); display: flex; justify-content: center; pointer-events: none; }
+.sticky { opacity: 0; visibility: hidden; transition: opacity .25s ease, visibility 0s linear .25s; will-change: opacity; bottom: calc(12px + env(safe-area-inset-bottom)); }
+.sticky.on { opacity: 1; visibility: visible; transition: opacity .25s ease; }
+.sticky .btn { pointer-events: auto; box-shadow: none; border: 1px solid rgba(214,179,132,.55); transform: none; }
+.sticky .btn:hover { transform: none; }
+@media (min-width: 900px) { .sticky { display: none; } }
 </style>
 </head>
 <body>
@@ -1084,8 +1091,16 @@ img { -webkit-user-drag: none; }
     var overSlider = ['reviews', 'start', 'zayavka'].some(function (id) { var b = document.getElementById(id).getBoundingClientRect(); return b.top < innerHeight - 60 && b.bottom > 60; });
     // и не висит поверх подвала
     var overFooter = footer.getBoundingClientRect().top < innerHeight - 20;
-    s.classList.toggle('on', past && !nearEnd && visibleCta === 0 && !overSlider && !overFooter);
+    want(past && !nearEnd && visibleCta === 0 && !overSlider && !overFooter);
   };
+  // показываем/прячем только если состояние держится 250 мс — кнопка не мигает при прокрутке
+  var shown = false, pending = null, timer = 0;
+  function want(on) {
+    if (on === shown) { clearTimeout(timer); pending = null; return; }
+    if (pending === on) return;
+    pending = on; clearTimeout(timer);
+    timer = setTimeout(function () { shown = on; pending = null; s.classList.toggle('on', on); }, 250);
+  }
   // липкая кнопка не показывается, когда на экране уже есть кнопка записи
   var visibleCta = 0;
   if ('IntersectionObserver' in window) {
