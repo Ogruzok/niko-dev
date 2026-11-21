@@ -82,6 +82,7 @@ section { padding: 72px 0; }
 .mnav.open { transform: none; }
 .mnav a:not(.btn) { font-family: var(--serif); font-size: 34px; text-decoration: none; line-height: 1.45; }
 .mnav .btn { margin-top: 26px; align-self: flex-start; }
+.mnav .mnav__cta { color: var(--gold); }
 .mnav__close { position: absolute; top: 12px; right: 18px; background: none; border: 0; color: var(--ivory); font-size: 40px; cursor: pointer; }
 
 /* 1. Обложка */
@@ -947,7 +948,8 @@ img { -webkit-user-drag: none; }
   /* форматы */
   .tickets { gap: 18px; margin-top: 20px; }
   .ticket__main { padding: 18px 18px 16px; }
-  .ticket__img img { aspect-ratio: 16 / 6.5; margin-bottom: 14px; }
+  .ticket__img img { aspect-ratio: 4 / 3; margin-bottom: 14px; }
+  .ticket .ticket__img img { object-position: center 12%; }
   .ticket__head { margin-bottom: 8px; padding-bottom: 8px; }
   .ticket h3 { font-size: 22px; margin-bottom: 10px; }
   .ticket__lbl { font-size: 12px; }
@@ -1032,7 +1034,7 @@ img { -webkit-user-drag: none; }
   <a href="#reviews">Отзывы</a>
   <a href="#faq">Вопросы</a>
   <a href="stati/">Блог</a>
-  <a class="btn btn--light" href="#popup:zayavkapsixolog">Записаться</a>
+  <a class="mnav__cta" href="#popup:zayavkapsixolog">Записаться</a>
 </nav>
 
 <main id="top"><span id="rec4093143501"></span>
@@ -1040,7 +1042,7 @@ img { -webkit-user-drag: none; }
 <!-- 1. Обложка / первый экран -->
 <section class="cover">
   <div class="wrap">
-    <div class="cover__meta"><span>Надежда Хомянина</span><span>Психология профессиональной реализации</span><span>Москва · онлайн</span></div>
+    <div class="cover__meta"><span>Москва · онлайн</span><span>Психология профессиональной реализации</span></div>
     <div class="cover__mast" aria-hidden="true">Хомянина</div>
     <div class="cover__grid">
       <div class="cover__photo" id="coverPhoto">
