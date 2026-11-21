@@ -344,7 +344,7 @@ section { padding: 72px 0; }
   .social a { padding: 8px 0; }
   .pop__title { font-size: 34px; }
 }
-@media (max-width: 359px) { .cover__over { white-space: normal; } .cover h1 { font-size: 28px; } }
+@media (max-width: 359px) { .cover__over { white-space: normal; } .cover h1 { font-size: 27px; } }
 @media (min-width: 640px) {
   .slide { flex-basis: 60%; }
   .ftr__grid { grid-template-columns: 1fr 1fr; }
@@ -789,6 +789,221 @@ img { -webkit-user-drag: none; }
 /* Липкая кнопка: появляется мягко (плавно всплывает), исчезает быстро */
 .sticky { opacity: 0; visibility: hidden; transform: translate3d(0, 14px, 0); transition: opacity .1s linear, transform .1s linear, visibility 0s linear .1s; }
 .sticky.on { opacity: 1; visibility: visible; transform: translate3d(0, 0, 0); transition: opacity .55s cubic-bezier(.2,.7,.2,1), transform .55s cubic-bezier(.2,.7,.2,1); }
+/* ===================== v18: правки по видео заказчицы ===================== */
+/* единый стиль шрифтов: заголовки — один шрифт и одно начертание, акцент только цветом; цитаты и подписи — текстовым шрифтом */
+.h2 i, .h2 .acc, .iv__title .acc, .cover h1 .acc, .states__final .acc, .next .h2 .acc { font-style: normal; }
+.acc { color: var(--caramel); }
+.dark .acc, .states__final .acc, .next .acc { color: var(--gold); }
+.h2, .iv__title, .cover h1 { font-weight: 600; letter-spacing: 0; }
+.logo { font-style: normal; font-weight: 600; }
+.method-q { font-family: var(--sans); font-style: normal; font-size: 17px; line-height: 1.6; color: var(--ink-2); }
+.letter blockquote { font-family: var(--sans); font-style: normal; font-size: 16px; line-height: 1.6; color: var(--ink-2); }
+.letter .q { font-size: 56px; height: 22px; }
+.voices__q { font-style: normal; font-weight: 600; }
+.letter cite { font-family: var(--sans); font-size: 16px; font-weight: 700; color: var(--ink); }
+
+/* первый экран */
+.cover__mast { font-weight: 600; }
+.cover__badge { position: absolute; right: 12px; bottom: 12px; z-index: 2; display: flex; align-items: center; gap: 8px; background: var(--espresso); color: var(--ivory); padding: 8px 12px 8px 10px; border-radius: 3px; }
+.cover__badge b { font: 600 30px/1 var(--serif); color: var(--gold); }
+.cover__badge span { font: 600 11px/1.25 var(--sans); letter-spacing: .8px; text-transform: uppercase; }
+.cover__photo, .cover__photo.flat { transform: none; }
+/* визуализация «Психология + Управление = Система» */
+.sysviz { background: var(--espresso); color: var(--ivory); border-radius: 4px; padding: 22px 18px 20px; }
+.sysviz__eq { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px; }
+.sysviz__eq span { font: 600 19px/1 var(--serif); padding: 9px 12px; border: 1px solid rgba(214,179,132,.45); border-radius: 3px; }
+.sysviz__eq .sysviz__res { background: var(--gold); color: var(--espresso); border-color: var(--gold); }
+.sysviz__eq i { font: 300 22px/1 var(--sans); font-style: normal; color: var(--gold); }
+.sysviz__br { flex-basis: 100%; height: 0; }
+@media (min-width: 900px) { .sysviz__br { display: none; } }
+.sysviz__steps { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 22px; position: relative; text-align: center; font: 600 12px/1.3 var(--sans); letter-spacing: 1px; text-transform: uppercase; color: rgba(245,239,230,.8); }
+.sysviz__steps::before { content: ''; position: absolute; left: 16.6%; right: 16.6%; top: 5px; height: 1px; background: rgba(214,179,132,.5); }
+.sysviz__steps li { position: relative; padding-top: 20px; }
+.sysviz__steps li::before { content: ''; position: absolute; left: 50%; top: 0; width: 11px; height: 11px; margin-left: -5.5px; border-radius: 50%; background: var(--espresso); border: 2px solid var(--gold); }
+.sysviz__steps li:last-child::before { background: var(--gold); }
+
+/* «Узнаете себя»: компактнее, каждая карточка своим оттенком и пиктограммой */
+.state { position: relative; }
+.state__ic { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(214,179,132,.5); margin-bottom: 12px; }
+.state__ic svg { width: 20px; height: 20px; stroke: var(--gold); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.state--1 { background: rgba(245,239,230,.04); }
+.state--2 { background: #33281f; }
+.state--3 { background: #3f3126; }
+.state--4 { background: #4b3a2c; }
+.state, .state:last-child { border-color: rgba(214,179,132,.3); }
+
+/* досье компактнее */
+.dossier { padding: 22px 18px 6px; }
+.dossier li { padding-bottom: 12px; }
+
+/* фундамент: крупные пиктограммы, заголовок явно крупнее текста, формула */
+.fund__ic { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: var(--espresso); margin-bottom: 14px; }
+.fund__ic svg { width: 30px; height: 30px; stroke: var(--gold); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.fund__card svg { margin: 0; }
+.fund__card p { -webkit-hyphens: manual; hyphens: manual; }
+.fund__formula { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr; align-items: center; gap: 10px; margin-top: 26px; background: var(--espresso); border-radius: 4px; padding: 20px; color: var(--ivory); }
+.fund__formula i { font: 300 24px/1 var(--sans); font-style: normal; color: var(--gold); text-align: center; }
+.ff { text-align: center; border: 1px solid rgba(214,179,132,.4); border-radius: 3px; padding: 12px 6px; }
+.ff b { display: block; font: 600 22px/1.1 var(--serif); color: var(--gold); }
+.ff span { display: block; font: 500 12px/1.3 var(--sans); letter-spacing: .5px; color: rgba(245,239,230,.75); margin-top: 4px; }
+.fund__sum, .fund__sum b { border: 0; padding: 0; text-align: center; margin: 14px auto 0; font-weight: 600; color: var(--ink); max-width: 560px; }
+
+/* методология: заметная схема */
+.venn__c--a { background: rgba(201,168,124,.26); border: 1.5px solid var(--caramel); }
+.venn__c--b { background: rgba(36,28,23,.09); border: 1.5px solid var(--ink-2); }
+.venn__c b { font-weight: 600; }
+.venn__mid { box-shadow: 0 0 0 4px var(--ivory); }
+.venn__out { grid-template-columns: 1fr 1fr; align-items: stretch; }
+.venn__out > div { height: 100%; border-radius: 4px; }
+.venn__lbl { font-size: 13px; letter-spacing: 1.2px; }
+.venn__gone { display: grid; gap: 6px; }
+.venn__gone s { color: var(--ink-2); text-decoration: line-through; text-decoration-color: var(--caramel); text-decoration-thickness: 1.5px; }
+
+/* форматы: компактно, каждый пакет — примерно в один экран */
+.ticket__img img { aspect-ratio: 16 / 7; margin-bottom: 16px; }
+.ticket h3 { margin-bottom: 12px; }
+.get { gap: 8px; }
+.ticket__res { font-family: var(--sans); font-style: normal; }
+
+/* отзывы с фото, кейсы с картинкой */
+.who { display: flex; align-items: center; gap: 12px; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); }
+.who cite { margin: 0; padding: 0; border: 0; }
+.ava { flex: 0 0 48px; width: 48px; height: 48px; border-radius: 50%; overflow: hidden; background: var(--sand); display: grid; place-items: center; }
+.ava img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.3); }
+.ava--txt { font: 600 22px/1 var(--serif); color: var(--caramel); }
+.case__img { margin: -6px -4px 18px; border-radius: 3px; overflow: hidden; }
+.case__img img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+
+/* финальный экран — одна кнопка, без полей */
+.next__btn { margin-top: 4px; }
+
+/* подвал: аккуратный, без огромной надписи */
+.ftr__name { display: inline-block; font: 600 22px/1.2 var(--serif); color: var(--ivory); text-decoration: none; margin-bottom: 4px; }
+.ftr__grid { margin-top: 14px; padding: 20px 0; }
+
+/* ===== телефон ===== */
+@media (max-width: 899px) {
+  section { padding: 48px 0; }
+  .fund { padding-top: 0; }
+  .next { padding: 0; }
+  .h2, .iv__title { font-size: 30px; line-height: 1.12; }
+  .h2::after { margin-top: 14px; }
+  .h2 + .lead, .h2 + .states__list, .h2 + .fund__grid, .h2 + .posts { margin-top: 18px; }
+  .state h3, .ticket h3, .case h3, .post h3, .pop__title { font-size: 22px; line-height: 1.15; }
+  body, p, li, .lead, .dossier li, .states__sub, .post p, .qa__a p { font-size: 17px; }
+  /* первый экран: кнопка помещается на первый экран */
+  .cover { padding: 72px 0 34px; }
+  .cover__meta { font-size: 12px; letter-spacing: 1.2px; padding-bottom: 8px; }
+  .cover__mast { font-size: 12vw; margin-top: 8px; line-height: .95; }
+  .cover__grid { margin-top: 10px; gap: 14px; }
+  .cover__photo, .cover__photo.flat { width: 100%; max-width: none; padding: 6px; }
+  .cover__photo img { aspect-ratio: 16 / 10; object-position: center 13%; }
+  .cover__intro { text-align: left; }
+  .cover__over { font-size: 11.5px; letter-spacing: .5px; white-space: nowrap; }
+  .cover h1 { font-size: 30px; line-height: 1.08; margin: 6px 0 8px; }
+  .cover__offer { font-size: 16px; line-height: 1.55; margin: 0 0 16px; text-align: left; }
+  .cover .btn { max-width: none; }
+  .lines { margin-top: 0; }
+  .line { padding: 16px 18px; }
+  .line b { font-size: 21px; }
+  .line span:last-child { font-size: 15.5px; }
+  /* состояния компактнее */
+  .states__list { gap: 10px; margin-top: 18px; }
+  .state, .state:last-child { padding: 18px 18px 18px; }
+  .state h3 { font-size: 21px; margin-bottom: 8px; }
+  .state p { font-size: 15.5px; line-height: 1.55; }
+  .state__ic { position: absolute; right: 14px; top: 14px; width: 34px; height: 34px; margin: 0; }
+  .state__ic svg { width: 17px; height: 17px; }
+  .state h3 { padding-right: 40px; }
+  .states__final { padding: 22px 18px; }
+  .states__final p { font-size: 23px; }
+  .states__final .states__sub { font-size: 16px; }
+  /* обо мне */
+  .iv__grid { gap: 22px; }
+  .iv__dek { font-size: 17px; margin-bottom: 18px; }
+  .dossier li { font-size: 16px; }
+  .method-q { font-size: 16px; margin: 22px 0; }
+  /* фундамент */
+  .fund__card { padding: 16px 14px 18px; }
+  .fund__ic { width: 48px; height: 48px; margin-bottom: 12px; }
+  .fund__ic svg { width: 26px; height: 26px; }
+  .fund__card h3 { font-size: clamp(18px, 5vw, 22px); margin-bottom: 6px; }
+  .fund__card p { font-size: 14px; line-height: 1.45; }
+  .fund__formula { grid-template-columns: 1fr auto 1fr; row-gap: 10px; padding: 16px 12px; }
+  .fund__formula > i:nth-of-type(2) { display: none; }
+  .ff b { font-size: 20px; }
+  .fund__sum, .fund__sum b { font-size: 16px; }
+  /* методология: круги рядом, читаемые */
+  .venn__title { font-size: 22px; margin: 24px 0 16px; }
+  .venn { flex-direction: row; justify-content: center; align-items: center; }
+  .venn__c, .venn__c--b { width: min(52vw, 212px); padding: 0 calc(13vw + 10px) 0 14px; margin: 0; }
+  .venn__c--b { margin-left: -13vw; padding: 0 14px 0 calc(13vw + 10px); }
+  .venn__c .kicker { font-size: 10.5px; letter-spacing: .8px; margin-bottom: 6px; }
+  .venn__c b { font-size: 15px; line-height: 1.22; }
+  .venn__mid { font-size: 14px; padding: 6px 11px; top: auto; bottom: 4%; transform: translateX(-50%); }
+  .venn__out { gap: 10px; margin-top: 22px; }
+  .venn__out > div { padding: 14px 14px; }
+  .venn__gone s { font-size: 15px; line-height: 1.35; }
+  /* форматы */
+  .tickets { gap: 18px; margin-top: 20px; }
+  .ticket__main { padding: 18px 18px 16px; }
+  .ticket__img img { aspect-ratio: 16 / 6.5; margin-bottom: 14px; }
+  .ticket__head { margin-bottom: 8px; padding-bottom: 8px; }
+  .ticket h3 { font-size: 22px; margin-bottom: 10px; }
+  .ticket__lbl { font-size: 12px; }
+  .get { gap: 7px; margin-top: 8px; }
+  .get li { font-size: 14.5px; line-height: 1.45; padding-left: 26px; }
+  .get li::before { width: 17px; height: 17px; top: 2px; background-size: 9px; }
+  .ticket__res { font-size: 15px; margin-top: 14px; padding-top: 12px; }
+  .ticket__res--plain { font-size: 14.5px; margin-top: 6px; padding-top: 0; }
+  .ticket__lbl--gap { margin-top: 14px; }
+  .ticket__stub { padding: 16px 18px 18px; }
+  .ticket__sum { font-size: 32px; }
+  .ticket__adm { font-size: 14px; margin: 4px 0 14px; }
+  .credit, .credit b { font-size: 14px; }
+  .credit { padding: 10px 12px; margin-top: 14px; }
+  /* отзывы */
+  .letter { padding: 26px 20px 20px; }
+  .letter blockquote { font-size: 16px; }
+  .case { padding: 20px 18px; }
+  .case ul, .case li { font-size: 15.5px; }
+  .voices__q { font-size: 22px; }
+  /* вопросы */
+  .qa button { font-size: 19px; font-weight: 600; }
+  /* финальный экран */
+  .next__in { padding: 190px 0 48px; }
+  .next__sub { font-size: 16px; }
+  .next__pts { font-size: 15px; gap: 10px; margin: 20px 0 22px; }
+  .next__pts b { font-size: 16px; }
+  .next__btn { width: 100%; }
+  .sysviz { padding: 18px 14px 18px; }
+  .sysviz__eq { gap: 8px 8px; }
+  .sysviz__eq span { font-size: 17px; padding: 8px 11px; }
+  .sysviz__steps { font-size: 11px; letter-spacing: .5px; margin-top: 18px; }
+  .track { align-items: flex-start; }
+  /* подвал */
+  .ftr { padding-top: 32px; }
+  .ftr, .ftr__copy, .social a, .social i, .ftr__legal a { font-size: 15px; }
+  .ftr__copy b { font-size: 17px; }
+  .ftr__inn { font-size: 13px; }
+}
+/* ===== компьютер ===== */
+@media (min-width: 900px) {
+  .h2, .iv__title { font-size: 48px; line-height: 1.05; }
+  .cover__mast { font-size: clamp(90px, 12vw, 170px); }
+  .cover h1 { font-size: clamp(38px, 3.6vw, 52px); }
+  .sysviz { order: 5; margin-top: 10px; grid-column: 1 / -1; display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: center; padding: 26px 34px; }
+  .sysviz__steps { margin-top: 0; }
+  .state__ic { position: absolute; right: 22px; top: 22px; }
+  .state h3 { padding-right: 56px; }
+  .venn__c, .venn__c--b { width: 360px; }
+  .venn__c--b { margin-left: -70px; }
+  .tickets { align-items: stretch; }
+  .ticket__img img { aspect-ratio: 16 / 7; }
+  .get li { font-size: 15.5px; }
+  .ff b { font-size: 26px; }
+  .letter blockquote { font-size: 16.5px; }
+}
 </style>
 </head>
 <body>
@@ -825,18 +1040,22 @@ img { -webkit-user-drag: none; }
 <!-- 1. Обложка / первый экран -->
 <section class="cover">
   <div class="wrap">
-    <div class="cover__meta"><span>Выпуск № 1</span><span>Психология профессиональной реализации</span><span>Москва · онлайн</span></div>
+    <div class="cover__meta"><span>Надежда Хомянина</span><span>Психология профессиональной реализации</span><span>Москва · онлайн</span></div>
     <div class="cover__mast" aria-hidden="true">Хомянина</div>
     <div class="cover__grid">
       <div class="cover__photo" id="coverPhoto">
         <img src="img/hero-tz.jpg" alt="Надежда Хомянина — психолог по профессиональной реализации" width="1100" height="1365" fetchpriority="high">
-        <div class="cover__stamp" aria-hidden="true"><span><b>15</b>лет<br>практики</span></div>
+        <div class="cover__badge"><b>15</b><span>лет<br>практики</span></div>
       </div>
       <div class="cover__intro">
         <p class="cover__over">Надежда Хомянина • <span style="white-space:nowrap">Экс-Project Manager, MBA</span></p>
-        <h1>Психолог по <i>профессиональной реализации</i></h1>
+        <h1>Психолог по <span class="acc">профессиональной реализации</span></h1>
         <p class="cover__offer">Выстраиваю профессиональную реализацию как управляемый проект: от ясности в&nbsp;ценностях&nbsp;— к&nbsp;устойчивым результатам.</p>
         <a class="btn btn--dark" href="#popup:zayavkapsixolog">Выстроить свою систему <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="sysviz" role="img" aria-label="Психология плюс управление равно система: ценности, стратегия, действия">
+        <div class="sysviz__eq"><span>Психология</span><i>+</i><span>Управление</span><b class="sysviz__br"></b><i>=</i><span class="sysviz__res">Система</span></div>
+        <ol class="sysviz__steps"><li>Ценности</li><li>Стратегия</li><li>Действия</li></ol>
       </div>
       <div class="lines">
         <div class="line"><span class="pg">✓</span><b>Системный подход</b><span>синтез управления (MBA) и психологии.</span></div>
@@ -851,15 +1070,15 @@ img { -webkit-user-drag: none; }
 <!-- 2. Узнаете себя? -->
 <section class="states dark" id="who"><span id="rec4125604701"></span>
   <div class="wrap">
-    <h2 class="h2 rv">Узнаете себя в одном из <i>этих состояний?</i></h2>
+    <h2 class="h2 rv">Узнаете себя в одном из <span class="acc">этих состояний?</span></h2>
     <div class="states__list">
-      <article class="state rv"><h3>«Всё держится на&nbsp;мне»</h3><p>Вы создали своё дело, но оно превратилось в бесконечную операционку. Вы тонете в рутине, тащите всё на себе, а на стратегию и масштаб времени не остаётся. Делегировать страшно, или некому, кажется: «без меня всё рухнет». И это высасывает все силы.</p></article>
-      <article class="state rv"><h3>«Меня недооценивают»</h3><p>Вы много лет в рынке. У вас есть опыт, навыки, результаты. Но когда нужно назвать цену — вы теряетесь. Вам неловко просить больше, чем у других. Вы боитесь, что скажут: «С чего вдруг так дорого?» И соглашаетесь на меньшее, хотя знаете, что стоите большего. В итоге доход не соответствует тому, что вы реально умеете.</p></article>
-      <article class="state rv"><h3>«Хочу перемен, но&nbsp;страшно»</h3><p>Вы хотите <em class="kw">сменить профессию</em> или выйти из найма, но страх потерять стабильность и статус парализует. Вы застряли между чужими ожиданиями и желанием жить свою жизнь. И не знаете, с какого шага начать, чтобы не разрушить всё.</p></article>
-      <article class="state rv"><h3>«Я потерял смысл»</h3><p>Вы достигли высот, о которых многие мечтают. Но радости это не приносит. Внешне всё успешно: работа, доход, статус. А внутри — усталость и пустота. Ощущение, что вы живёте не свою жизнь, а играете чужую роль. И не знаете, как это изменить.</p></article>
+      <article class="state state--1 rv"><span class="state__ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 20h16M6 16h12M8 12h8M10 8h4M12 4v4"/></svg></span><h3>«Всё держится на&nbsp;мне»</h3><p>Вы создали своё дело, но оно превратилось в бесконечную операционку. Вы тонете в рутине, тащите всё на себе, а на стратегию и масштаб времени не остаётся. Делегировать страшно, или некому, кажется: «без меня всё рухнет». И это высасывает все силы.</p></article>
+      <article class="state state--2 rv"><span class="state__ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8L3 12z"/><circle cx="7.5" cy="8" r="1.4"/></svg></span><h3>«Меня недооценивают»</h3><p>Вы много лет в рынке. У вас есть опыт, навыки, результаты. Но когда нужно назвать цену — вы теряетесь. Вам неловко просить больше, чем у других. Вы боитесь, что скажут: «С чего вдруг так дорого?» И соглашаетесь на меньшее, хотя знаете, что стоите большего. В итоге доход не соответствует тому, что вы реально умеете.</p></article>
+      <article class="state state--3 rv"><span class="state__ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h13M13 6l6 6-6 6"/><path d="M4 5v14"/></svg></span><h3>«Хочу перемен, но&nbsp;страшно»</h3><p>Вы хотите <em class="kw">сменить профессию</em> или выйти из найма, но страх потерять стабильность и статус парализует. Вы застряли между чужими ожиданиями и желанием жить свою жизнь. И не знаете, с какого шага начать, чтобы не разрушить всё.</p></article>
+      <article class="state state--4 rv"><span class="state__ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5 5-2z"/></svg></span><h3>«Я потерял смысл»</h3><p>Вы достигли высот, о которых многие мечтают. Но радости это не приносит. Внешне всё успешно: работа, доход, статус. А внутри — усталость и пустота. Ощущение, что вы живёте не свою жизнь, а играете чужую роль. И не знаете, как это изменить.</p></article>
     </div>
     <div class="states__final rv">
-      <p><i>Но это не тупик.</i> Это точка, в&nbsp;которой начинается система.</p>
+      <p><span class="acc">Но это не тупик.</span> Это точка, в&nbsp;которой начинается система.</p>
       <p class="states__sub">Спроектируем ваше направление, выстроим стратегию и превратим разрозненные задачи в&nbsp;управляемый план действий.</p>
       <a class="btn btn--light" href="#popup:zayavkapsixolog">Выстроить свою систему <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
@@ -872,7 +1091,7 @@ img { -webkit-user-drag: none; }
     <div class="iv__grid">
       <figure class="iv__photo rv"><img src="img/about-tz.jpg" alt="Надежда Хомянина" width="1000" height="1333" loading="lazy"><figcaption><span>Надежда Хомянина</span><span>Москва · онлайн</span></figcaption></figure>
       <div class="rv">
-        <h2 class="iv__title">Надежда <i>Хомянина</i></h2>
+        <h2 class="iv__title">Надежда <span class="acc">Хомянина</span></h2>
         <p class="iv__dek">Психолог по профессиональной реализации.</p>
         <ul class="dossier">
           <li>MBA, Президентская программа развития предпринимательства.</li>
@@ -889,21 +1108,27 @@ img { -webkit-user-drag: none; }
 <!-- 3a. Мой профессиональный фундамент -->
 <section class="fund" id="base">
   <div class="wrap">
-    <h2 class="h2 rv">Мой профессиональный <i>фундамент</i></h2>
+    <h2 class="h2 rv">Мой профессиональный <span class="acc">фундамент</span></h2>
     <div class="fund__grid">
-      <article class="fund__card rv"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="15" r="5"/><path d="M9.2 10.8 6.5 3h11l-2.7 7.8"/></svg><h3>Офицер</h3><p>Военный вуз, красный диплом. Дисциплина, системность, стрессо&shy;устойчивость.</p></article>
-      <article class="fund__card rv"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 20V11M12 20V4M19 20v-6M2 20h20"/></svg><h3>Управление</h3><p>MBA. Проектное управление, стратегия, ресурсы, цели.</p></article>
-      <article class="fund__card rv"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v18M7 21h10M5 7h14M5 7l-3 7a3 3 0 0 0 6 0L5 7zM19 7l-3 7a3 3 0 0 0 6 0l-3-7z"/></svg><h3>Юриспруденция</h3><p>Знание законов, медиация, защита интересов.</p></article>
-      <article class="fund__card rv"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10A4.2 4.2 0 0 1 12 7.4 4.2 4.2 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"/></svg><h3>Психология</h3><p>Эмпатия, работа с барьерами, поддержка.</p></article>
+      <article class="fund__card rv"><span class="fund__ic"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M6 11h20l-2 14H8L6 11z"/><path d="M6 11l3-5h14l3 5"/><path d="M16 14.5l1.3 2.7 3 .4-2.2 2.1.5 3-2.6-1.4-2.6 1.4.5-3-2.2-2.1 3-.4z"/></svg></span><h3>Офицер</h3><p>Военный вуз, красный диплом. Дисциплина, системность, стрессо&shy;устойчивость.</p></article>
+      <article class="fund__card rv"><span class="fund__ic"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M5 27h22"/><path d="M8 27V17h4v10M14 27V11h4v16M20 27V6h4v21"/></svg></span><h3>Управление</h3><p>MBA. Проектное управление, стратегия, ресурсы, цели.</p></article>
+      <article class="fund__card rv"><span class="fund__ic"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 5v21M10 27h12M7 9h18"/><path d="M7 9l-4 8a4 4 0 0 0 8 0L7 9zM25 9l-4 8a4 4 0 0 0 8 0l-4-8z"/></svg></span><h3>Юриспруденция</h3><p>Знание законов, медиация, защита интересов.</p></article>
+      <article class="fund__card rv"><span class="fund__ic"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M19 27v-4h3a2 2 0 0 0 2-2v-3l2-1-2-4a9 9 0 1 0-15 7v7"/><path d="M14.5 15.5s-2.5-1.6-2.5-3.4a1.6 1.6 0 0 1 2.5-1.3 1.6 1.6 0 0 1 2.5 1.3c0 1.8-2.5 3.4-2.5 3.4z"/></svg></span><h3>Психология</h3><p>Эмпатия, работа с барьерами, поддержка.</p></article>
     </div>
-    <p class="fund__sum rv">Управленческая система + юридические границы + офицерский стержень + психологическая глубина. <b>Это мой инструментарий, который я использую для вашего результата.</b></p>
+    <div class="fund__formula rv" role="img" aria-label="Управленческая система плюс юридические границы плюс офицерский стержень плюс психологическая глубина">
+      <div class="ff"><b>Система</b><span>управленческая</span></div><i>+</i>
+      <div class="ff"><b>Границы</b><span>юридические</span></div><i>+</i>
+      <div class="ff"><b>Стержень</b><span>офицерский</span></div><i>+</i>
+      <div class="ff"><b>Глубина</b><span>психологическая</span></div>
+    </div>
+    <p class="fund__sum rv">Это мой инструментарий, который я&nbsp;использую для вашего результата.</p>
   </div>
 </section>
 
 <!-- 4. Методология -->
 <section class="method" id="how"><span id="rec4126838701"></span>
   <div class="wrap">
-    <h2 class="h2 rv">Методология: от ценностей <i>к&nbsp;результату</i></h2>
+    <h2 class="h2 rv">Методология: от ценностей <span class="acc">к&nbsp;результату</span></h2>
     <p class="lead rv">В основе всего — ваши ценности. Это главная опора. Если внутри ясно, то и снаружи всё складывается. Мы работаем на двух уровнях одновременно:</p>
     <p class="venn__title rv">Внутренняя опора + внешние действия</p>
     <div class="venn rv" role="img" aria-label="Два пересекающихся круга: внутренний уровень и внешний уровень, в пересечении — 1 + 1 = 11">
@@ -921,7 +1146,7 @@ img { -webkit-user-drag: none; }
 <!-- 6. Форматы работы -->
 <section class="inv" id="start"><span id="rec4122606101"></span><span id="price"></span>
   <div class="wrap">
-    <h2 class="h2 rv">Форматы <i>работы</i></h2>
+    <h2 class="h2 rv">Форматы <span class="acc">работы</span></h2>
     <p class="lead rv">Работаю адресно, под конкретную задачу. Начинаем с диагностики — это позволяет объективно оценить текущую ситуацию и определить вектор движения.</p>
     <div class="tickets">
       <article class="ticket rv">
@@ -968,18 +1193,18 @@ img { -webkit-user-drag: none; }
 <section class="voices" id="reviews">
   <div class="wrap">
     <div class="voices__top">
-      <h2 class="h2 rv">Отзывы <i>и проекты</i></h2>
+      <h2 class="h2 rv">Отзывы <span class="acc">и проекты</span></h2>
       <div class="arrows"><button type="button" data-dir="-1" aria-label="Назад">←</button><button type="button" data-dir="1" aria-label="Вперёд">→</button></div>
     </div>
     <p class="swipe-hint">Листайте →</p>
     <div class="track" id="track">
-      <article class="slide letter"><p class="to">Письмо читателя</p><div class="q">“</div><blockquote>Надежда помогла разложить всё по полочкам. Получила не просто совет, а чёткий алгоритм: как продвигать себя и искать клиентов. Всё структурно, без воды. Спасибо за системный подход и уверенность в действиях!</blockquote><cite>Ольга</cite></article>
-      <article class="slide letter"><p class="to">Письмо читателя</p><div class="q">“</div><blockquote>Спасибо за консультацию! Всё структурно и понятно. Наконец-то у меня есть пошаговый план: что делать первым, что вторым. Начала действовать сразу. Отдельное спасибо за пакет материалов после встречи — это экономит недели!</blockquote><cite>Юлия</cite></article>
-      <article class="slide letter"><p class="to">Письмо читателя</p><div class="q">“</div><blockquote>Обратилась к Надежде за помощью с сайтом для запуска своего проекта. Сделали всё в срок, все пожелания учтены. Сейчас у меня успешный бизнес — Надежда стала отличным началом этого пути!</blockquote><cite>Елена Коротких</cite></article>
-      <article class="slide case"><h3>GetHelpers.ru</h3><ul><li><b>Задача:</b> Систематизировать идеи и разработать структуру образовательного продукта под запрос рынка.</li><li><b>Решение:</b> Провела анализ аудитории, спроектировала архитектуру и методологию курса.</li><li><b>Результат:</b> Готовая программа с подтвержденной актуальностью. Продукт укомплектован для запуска.</li></ul></article>
-      <article class="slide case"><h3>«Актёрская Академия»</h3><ul><li><b>Задача:</b> Создать систему для роста продукта без постоянного участия собственника.</li><li><b>Решение:</b> Переупаковала продукт, выстроила маркетинг.</li><li><b>Результат:</b> Процессы формализованы и автоматизированы.</li></ul></article>
-      <article class="slide case"><h3>Онлайн-школа омоложения</h3><ul><li><b>Задача:</b> Масштабировать проект и убрать ручное управление.</li><li><b>Решение:</b> Описала бизнес-процессы, разработала необходимые материалы, выстроила структуру.</li><li><b>Результат:</b> Команда сформирована, процессы работают автономно. Проект вышел на новый уровень.</li></ul></article>
-      <article class="slide case"><h3>Classkid</h3><ul><li><b>Задача:</b> Подготовить проект к масштабированию.</li><li><b>Решение:</b> Спроектировала партнерскую сеть и архитектуру управления.</li><li><b>Результат:</b> Процессы выстроены. Система готова к дальнейшему росту. Спикер Сколково.</li></ul></article>
+      <article class="slide letter"><p class="to">Письмо читателя</p><div class="q">“</div><blockquote>Надежда помогла разложить всё по полочкам. Получила не просто совет, а чёткий алгоритм: как продвигать себя и искать клиентов. Всё структурно, без воды. Спасибо за системный подход и уверенность в действиях!</blockquote><div class="who"><span class="ava"><img src="img/noroot-1.png" alt="" width="80" height="80" loading="lazy"></span><cite>Ольга</cite></div></article>
+      <article class="slide letter"><p class="to">Письмо читателя</p><div class="q">“</div><blockquote>Спасибо за консультацию! Всё структурно и понятно. Наконец-то у меня есть пошаговый план: что делать первым, что вторым. Начала действовать сразу. Отдельное спасибо за пакет материалов после встречи — это экономит недели!</blockquote><div class="who"><span class="ava"><img src="img/noroot-2.png" alt="" width="80" height="80" loading="lazy"></span><cite>Юлия</cite></div></article>
+      <article class="slide letter"><p class="to">Письмо читателя</p><div class="q">“</div><blockquote>Обратилась к Надежде за помощью с сайтом для запуска своего проекта. Сделали всё в срок, все пожелания учтены. Сейчас у меня успешный бизнес — Надежда стала отличным началом этого пути!</blockquote><div class="who"><span class="ava ava--txt">Е</span><cite>Елена Коротких</cite></div></article>
+      <article class="slide case"><div class="case__img"><img src="img/case-gethelpers.jpg" alt="" width="800" height="480" loading="lazy" decoding="async"></div><h3>GetHelpers.ru</h3><ul><li><b>Задача:</b> Систематизировать идеи и разработать структуру образовательного продукта под запрос рынка.</li><li><b>Решение:</b> Провела анализ аудитории, спроектировала архитектуру и методологию курса.</li><li><b>Результат:</b> Готовая программа с подтвержденной актуальностью. Продукт укомплектован для запуска.</li></ul></article>
+      <article class="slide case"><div class="case__img"><img src="img/case-acting.jpg" alt="" width="800" height="480" loading="lazy" decoding="async"></div><h3>«Актёрская Академия»</h3><ul><li><b>Задача:</b> Создать систему для роста продукта без постоянного участия собственника.</li><li><b>Решение:</b> Переупаковала продукт, выстроила маркетинг.</li><li><b>Результат:</b> Процессы формализованы и автоматизированы.</li></ul></article>
+      <article class="slide case"><div class="case__img"><img src="img/case-team.jpg" alt="" width="800" height="480" loading="lazy" decoding="async"></div><h3>Онлайн-школа омоложения</h3><ul><li><b>Задача:</b> Масштабировать проект и убрать ручное управление.</li><li><b>Решение:</b> Описала бизнес-процессы, разработала необходимые материалы, выстроила структуру.</li><li><b>Результат:</b> Команда сформирована, процессы работают автономно. Проект вышел на новый уровень.</li></ul></article>
+      <article class="slide case"><div class="case__img"><img src="img/case-classkid.jpg" alt="" width="800" height="480" loading="lazy" decoding="async"></div><h3>Classkid</h3><ul><li><b>Задача:</b> Подготовить проект к масштабированию.</li><li><b>Решение:</b> Спроектировала партнерскую сеть и архитектуру управления.</li><li><b>Результат:</b> Процессы выстроены. Система готова к дальнейшему росту. Спикер Сколково.</li></ul></article>
     </div>
     <div class="dots" id="dots" aria-hidden="true"></div>
     <p class="voices__q rv">«Ваша профессиональная реализация — это не случайность. Это система, которую можно выстроить».</p>
@@ -990,7 +1215,7 @@ img { -webkit-user-drag: none; }
 <section class="ref" id="faq">
   <div class="wrap">
     <div class="ref__grid">
-      <div class="ref__aside rv"><h2 class="h2">Частые <i>вопросы</i></h2><p>Если вашего вопроса нет — задайте его на первой встрече.</p></div>
+      <div class="ref__aside rv"><h2 class="h2">Частые <span class="acc">вопросы</span></h2><p>Если вашего вопроса нет — задайте его на первой встрече.</p></div>
       <div class="rv">
         <div class="qa"><button type="button" aria-expanded="false">Чем ваш подход отличается от психотерапии?</button><div class="qa__a"><p>Традиционная психотерапия часто работает с прошлым и эмоциональным состоянием. Мой подход — это прикладная работа с настоящим и будущим. Как психолог, я помогаю справиться с выгоранием и страхами. Как управленец — помогаю выстроить бизнес-процессы, позиционирование и стратегию. Мы работаем с вашей реальностью (карьера, бизнес, доход).</p></div></div>
         <div class="qa"><button type="button" aria-expanded="false">Чем ваш подход отличается от бизнес-коучинга?</button><div class="qa__a"><p>Коучинг часто ограничивается постановкой целей и мотивацией. Мой метод глубже: мы убираем внутренние барьеры (саботаж, страхи, ограничивающие убеждения), которые мешают вам двигаться. И только потом подкрепляем это системным проектным подходом. Мы создаем архитектуру, в которой вы сможете достичь целей без выгорания.</p></div></div>
@@ -1023,24 +1248,14 @@ img { -webkit-user-drag: none; }
   <img src="img/final-2026.jpg" alt="" width="1000" height="1333" loading="lazy" decoding="async">
   <div class="next__in">
     <div class="wrap">
-      <h2 class="h2 rv">Следующий выпуск — <i>о&nbsp;вас</i></h2>
+      <h2 class="h2 rv">Следующий выпуск — <span class="acc">о&nbsp;вас</span></h2>
       <p class="next__sub rv">Начинаем с диагностики — это позволяет объективно оценить текущую ситуацию и определить вектор движения.</p>
       <ul class="next__pts rv">
         <li><b>Аудит текущей ситуации</b>где вы сейчас и что тормозит</li>
         <li><b>План на месяц</b>чёткие шаги с приоритетами</li>
         <li><b>Итоговый документ</b>остаётся у вас</li>
       </ul>
-      <form class="lead-form rv" action="https://formsubmit.co/ajax/sch-geisha@yandex.ru" method="post" novalidate>
-        <input class="pop__input" type="text" name="name" placeholder="Ваше имя" autocomplete="name" aria-label="Ваше имя">
-        <input class="pop__input" type="tel" name="phone" placeholder="Ваш номер" autocomplete="tel" aria-label="Ваш номер" required>
-        <input type="text" name="website" class="pop__hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <label class="pop__check"><input type="checkbox" name="agree" value="1" required> <span>Я согласен с <a href="policy/" target="_blank">политикой обработки персональных данных</a></span></label>
-        <button class="btn btn--light" type="submit">Записаться на диагностику</button>
-        <p class="pop__msg" aria-live="polite"></p>
-      </form>
-      <div class="lead-done" hidden>
-        <p class="next__sub">Спасибо! Заявка отправлена. Я свяжусь с вами в ближайшее время.</p>
-      </div>
+      <a class="btn btn--light next__btn rv" href="#popup:zayavkapsixolog">Записаться на диагностику <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <p class="next__note">Стоимость диагностики (10&nbsp;000&nbsp;₽) засчитывается в сопровождение.</p>
     </div>
   </div>
@@ -1051,7 +1266,7 @@ img { -webkit-user-drag: none; }
 <!-- 10. Подвал -->
 <footer class="ftr">
   <div class="wrap">
-    <div class="ftr__mast">Хомянина</div>
+    <a class="ftr__name" href="./">Надежда Хомянина</a>
     <div class="ftr__grid">
       <div class="ftr__copy"><b>© Надежда Хомянина, 2026.</b>Психолог по профессиональной реализации.</div>
       <div class="social" aria-label="Соцсети"><a href="#" data-todo="vk">ВКонтакте ↗</a><i>|</i><a href="#" data-todo="dzen">Дзен ↗</a><i>|</i><a href="#" data-todo="tenchat">TenChat ↗</a></div>
