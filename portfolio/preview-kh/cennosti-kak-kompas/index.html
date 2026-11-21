@@ -103,7 +103,7 @@
 }
 </script>
 <meta name="theme-color" content="#f5efe6">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="../fonts/cormorantgaramond-normal-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../fonts/manrope-normal-cyrillic.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="../fonts/fonts.css">
 <style>
 :root {
   --ivory: #f5efe6; --paper: #fbf7f1; --sand: #e9dfd1; --taupe: #b6a28b; --caramel: #9a6b43; --gold: #d6b384;
@@ -172,6 +172,29 @@ a { color: inherit; }
 /* шапка без просветов, логотип прямым начертанием */
 .hdr { background: var(--ivory); backdrop-filter: none; -webkit-backdrop-filter: none; top: -200px; margin-top: -200px; padding-top: 200px; }
 html { background: var(--ivory); }
+
+/* ===== Единый стиль с главной: форма записи и липкая кнопка ===== */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+a, button, summary, label { -webkit-tap-highlight-color: transparent; }
+.pop { position: fixed; inset: 0; z-index: 80; background: rgba(27,21,17,.72); display: flex; align-items: center; justify-content: center; padding: 16px; }
+.pop[hidden] { display: none; }
+.pop__box { position: relative; background: var(--paper); width: min(480px, 100%); padding: 44px 24px 30px; }
+.pop__close { position: absolute; top: 6px; right: 8px; width: 44px; height: 44px; background: none; border: 0; font-size: 34px; cursor: pointer; color: var(--muted); }
+.pop__title { font-family: var(--serif); font-weight: 600; font-size: 32px; line-height: 1.05; }
+.pop__text { color: var(--ink-2); margin: 10px 0 22px; font-size: 16px; }
+.pop__input { width: 100%; border: 0; border-bottom: 1px solid var(--taupe); background: transparent; padding: 14px 0; font: 18px var(--sans); color: var(--ink); margin-bottom: 10px; border-radius: 0; }
+.pop__input:focus { outline: none; border-color: var(--ink); }
+.pop__hp { position: absolute; left: -9999px; }
+.pop__check { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; color: var(--ink-2); margin: 14px 0 24px; }
+.pop__check input { width: 20px; height: 20px; flex: 0 0 20px; margin-top: 2px; accent-color: var(--caramel); }
+.pop__msg { margin-top: 12px; font-size: 15px; color: #a35d4a; }
+.pop .btn { width: 100%; }
+.sticky { position: fixed; left: 16px; right: 16px; bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 35; display: flex; justify-content: center; pointer-events: none; opacity: 0; visibility: hidden; transform: translate3d(0, 14px, 0); transition: opacity .1s linear, transform .1s linear, visibility 0s linear .1s; will-change: opacity; }
+.sticky.on { opacity: 1; visibility: visible; transform: translate3d(0, 0, 0); transition: opacity .55s cubic-bezier(.2,.7,.2,1), transform .55s cubic-bezier(.2,.7,.2,1); }
+.sticky .btn { pointer-events: auto; width: auto; white-space: nowrap; box-shadow: none; border: 1px solid rgba(214,179,132,.55); font-size: 17px; }
+.sticky .btn:hover { transform: none; }
+@media (min-width: 900px) { .sticky { display: none; } }
+@media (max-width: 899px) { .btn { font-size: 17px; } }
 
 /* ===== Статья в журнальном стиле (поверх исходной разметки статьи) ===== */
 .ar { display: block; }
@@ -325,6 +348,34 @@ html { background: var(--ivory); }
 .ar-toc li::before { font-size: 15px; font-weight: 700; padding-top: 4px; }
 .pv-art .ar-cta p { font-family: var(--sans); font-style: normal; font-size: 18px; line-height: 1.6; }
 
+/* ===== Единая шкала с главной: заголовки 600, H1 38 / H2 32 / H3 25 на телефоне, текст 18 ===== */
+.pv-hero__title, .pv-art h2, .pv-art h3, .pv-faq h2, .pv-more h2, .pv-more__title, .pv-cta__lead, .pv-cta__name { font-weight: 600; }
+.pv-faq__item summary { font-weight: 600; }
+/* «Читайте также» — такие же карточки, как «Публикации» на главной */
+.pv-more__grid { gap: 24px; }
+.pv-more__card { gap: 0; background: var(--ivory); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; transition: border-color .2s; }
+.pv-more__card:hover { border-color: var(--taupe); }
+.pv-more__img img { aspect-ratio: 16 / 10; }
+.pv-more__card:hover .pv-more__img img { transform: none; }
+.pv-more__body { padding: 20px 24px 24px; gap: 8px; }
+.pv-more__title { line-height: 1.18; }
+@media (max-width: 900px) {
+  .pv-hero__title { font-size: 38px; line-height: 1.08; letter-spacing: 0; }
+  .pv-art h2, .pv-faq h2, .pv-more h2 { font-size: 32px; line-height: 1.12; }
+  .pv-art h3, .pv-more__title { font-size: 25px; line-height: 1.15; }
+  .pv-faq__item summary { font-size: 22px; line-height: 1.25; }
+  .pv-cta__lead { font-size: 25px; line-height: 1.3; }
+  .pv-cta__name { font-size: 25px; }
+  .pv-art, .pv-art p, .pv-art li, .pv-hero__lead, .pv-faq__item p, .pv-cta__line, .pv-art .ar-cta p { font-size: 18px; }
+  .pv-hero__tag, .pv-more__tag, .pv-quote cite, .ar-toc__title, .pv-cta__role, .ar-cta::before, .ar-nav__btn { font-size: 13px; letter-spacing: 1.4px; }
+  .pv-hero__readtime, .pv-more__link, .pv-hero__role, .pv-hero__badge-sub, .ar-meta time, .ar-fig figcaption { font-size: 15px; }
+  .pv-hero__name { font-size: 16px; }
+  .ar-toc a { font-size: 20px; }
+  .pv-quote blockquote p, .pv-art blockquote { font-size: 23px; }
+  .pv-more__img img { aspect-ratio: 16 / 10; }
+}
+@media (max-width: 900px) { .pv-art .ar-toc__title { font-size: 13px; letter-spacing: 1.4px; } }
+
 </style>
 </head>
 <body>
@@ -339,7 +390,7 @@ html { background: var(--ivory); }
       <a href="../#faq">Вопросы</a>
       <a href="../stati/" class="on">Блог</a>
     </nav>
-    <a class="btn btn--dark" href="../#start">Записаться</a>
+    <a class="btn btn--dark" href="#popup:zayavkapsixolog">Записаться</a>
 
     <button class="burger" id="burger" aria-label="Меню"><span></span><span></span></button>
   </div>
@@ -353,7 +404,7 @@ html { background: var(--ivory); }
   <a href="../#reviews">Отзывы</a>
   <a href="../#faq">Вопросы</a>
   <a href="../stati/">Блог</a>
-  <a class="btn btn--light" href="../#start">Записаться</a>
+  <a class="btn btn--light" href="#popup:zayavkapsixolog">Записаться</a>
 </nav>
 <main class="ar">
 <!-- Верх статьи – как у образца «Быть нужным»: текст слева, вертикальное фото справа, плашка на фото.
@@ -453,7 +504,7 @@ html { background: var(--ivory); }
   <p class="pv-cta__line">Буду рада помочь.</p>
   <div class="pv-cta__sign"><span class="pv-cta__divider" aria-hidden="true"></span>
     <p class="pv-cta__name"><a href="../#about">Надежда Хомянина</a></p><p class="pv-cta__role">психолог в сфере профессиональной реализации</p></div>
-  <a class="pv-cta__btn" href="../#start">Записаться на консультацию <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  <a class="pv-cta__btn" href="#popup:zayavkapsixolog">Записаться на консультацию <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 </div></section>
 </main>
 <footer class="ftr">
@@ -471,6 +522,77 @@ html { background: var(--ivory); }
     <p class="ftr__inn">Хомянина Н. Н. · ИНН 620601455499 · Москва и онлайн</p>
   </div>
 </footer>
+<div class="sticky" id="sticky"><a class="btn btn--dark" href="#popup:zayavkapsixolog">Выстроить свою систему</a></div>
+<div class="pop" id="kh-pop" role="dialog" aria-modal="true" aria-labelledby="kh-pop-title" hidden>
+  <div class="pop__box">
+    <button class="pop__close" type="button" aria-label="Закрыть">×</button>
+    <form class="kh-pop__form" action="https://formsubmit.co/ajax/sch-geisha@yandex.ru" method="post" novalidate>
+      <p class="pop__title" id="kh-pop-title">Оставить заявку</p>
+      <p class="pop__text">Заполните форму, и я свяжусь с вами в ближайшее время</p>
+      <input class="pop__input" type="text" name="name" placeholder="Ваше имя" autocomplete="name">
+      <input class="pop__input" type="tel" name="phone" placeholder="Ваш номер" autocomplete="tel" required>
+      <input type="text" name="website" class="pop__hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="pop__check"><input type="checkbox" name="agree" value="1" required> <span>Я согласен с <a href="../policy/" target="_blank">политикой обработки персональных данных</a></span></label>
+      <button class="btn btn--dark" type="submit">Отправить</button>
+      <p class="pop__msg kh-pop__msg" aria-live="polite"></p>
+    </form>
+    <div class="kh-pop__done" hidden>
+      <p class="pop__title">Спасибо!</p>
+      <p class="pop__text">Заявка отправлена. Я свяжусь с вами в ближайшее время.</p>
+    </div>
+  </div>
+</div>
+<script>
+(function () {
+  var pop = document.getElementById('kh-pop'), form = pop.querySelector('form'), msg = pop.querySelector('.kh-pop__msg'), done = pop.querySelector('.kh-pop__done');
+  function setPop(open) { pop.hidden = !open; document.body.style.overflow = open ? 'hidden' : ''; if (open) form.querySelector('[name=name]').focus(); }
+  document.addEventListener('click', function (e) { var a = e.target.closest('a[href="#popup:zayavkapsixolog"]'); if (a) { e.preventDefault(); setPop(true); } });
+  pop.querySelector('.pop__close').addEventListener('click', function () { setPop(false); });
+  pop.addEventListener('click', function (e) { if (e.target === pop) setPop(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setPop(false); });
+  form.addEventListener('submit', function (e) {
+    e.preventDefault(); msg.textContent = '';
+    var phone = form.phone.value.replace(/\D/g, '');
+    if (phone.length < 10) { msg.textContent = 'Укажите номер телефона полностью'; form.phone.focus(); return; }
+    if (!form.agree.checked) { msg.textContent = 'Нужно согласие на обработку персональных данных'; return; }
+    var btn = form.querySelector('button[type=submit]'); btn.disabled = true;
+    if (form.website.value) { form.hidden = true; done.hidden = false; return; }
+    var data = new FormData();
+    data.append('Имя', form.querySelector('[name=name]').value.trim() || '–');
+    data.append('Телефон', form.phone.value.trim());
+    data.append('Согласие на обработку данных', 'да');
+    data.append('Страница', document.title);
+    data.append('_subject', 'Заявка с сайта khomyanina.ru');
+    data.append('_template', 'table');
+    data.append('_captcha', 'false');
+    var btnText = btn.textContent; btn.textContent = 'Отправляем…';
+    function thanks() { if (!done.hidden) return; form.hidden = true; done.hidden = false; if (window.ym) ym(97319848, 'reachGoal', 'zayavka'); }
+    var wait = setTimeout(thanks, 6000);
+    fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' }, keepalive: true })
+      .then(function (r) { return r.json(); })
+      .then(function (d) { if (String(d.success) !== 'true') throw new Error(); thanks(); })
+      .catch(function () { if (!done.hidden) return; clearTimeout(wait); msg.innerHTML = 'Не получилось отправить. Позвоните: <a href="tel:+79032780210">+7 903 278 0210</a>'; })
+      .finally(function () { btn.disabled = false; btn.textContent = btnText; });
+  });
+  // липкая кнопка (телефон): после первого экрана; прячется заранее, если рядом другая кнопка записи или подвал
+  var s = document.getElementById('sticky'), footer = document.querySelector('.ftr');
+  var ctas = [].slice.call(document.querySelectorAll('main a[href="#popup:zayavkapsixolog"]'));
+  var shown = false, timer = 0;
+  function want(on) {
+    if (!on) { clearTimeout(timer); timer = 0; if (shown) { shown = false; s.classList.remove('on'); } return; }
+    if (shown || timer) return;
+    timer = setTimeout(function () { timer = 0; shown = true; s.classList.add('on'); }, 400);
+  }
+  function f() {
+    var past = scrollY > innerHeight * 0.9;
+    var overFooter = footer.getBoundingClientRect().top < innerHeight + 80;
+    var near = false;
+    for (var i = 0; i < ctas.length; i++) { var r = ctas[i].getBoundingClientRect(); if (r.height && r.top < innerHeight + 280 && r.bottom > -220) { near = true; break; } }
+    want(past && !overFooter && !near);
+  }
+  var raf = 0; addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(function () { raf = 0; f(); }); }, { passive: true }); f();
+})();
+</script>
 <script>
 (function () {
   var m = document.getElementById('mnav');
