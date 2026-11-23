@@ -202,6 +202,15 @@ a, button, summary, label { -webkit-tap-highlight-color: transparent; }
 .ftr__grid { margin-top: 14px; padding: 20px 0; }
 @media (max-width: 899px) { .ftr { padding-top: 32px; } .ftr, .ftr__copy, .social a, .social i, .ftr__legal a { font-size: 15px; } .ftr__inn { font-size: 13px; } }
 
+/* подвал: компактный, светлый (ТЗ: светло-бежевый фон, графитовый текст) */
+.ftr.foot { background: var(--sand); color: var(--ink-2); border-top: 1px solid var(--line); padding: 22px 0 24px; font-size: 13px; }
+.foot .foot__row { font-size: 13px; line-height: 1.6; margin: 0 0 4px; color: var(--ink-2); }
+.foot .foot__row b { font-weight: 600; color: var(--ink); }
+.foot .foot__row a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--taupe); }
+.foot .foot__row a:hover { color: var(--caramel); }
+.foot .foot__row--dim { color: var(--muted); margin: 0; }
+@media (max-width: 899px) { .ftr.foot { padding: 20px 0 calc(76px + env(safe-area-inset-bottom)); } .foot .foot__row { font-size: 13px; } }
+
 /* ===== Статья в журнальном стиле (поверх исходной разметки статьи) ===== */
 .ar { display: block; }
 
@@ -499,19 +508,12 @@ a, button, summary, label { -webkit-tap-highlight-color: transparent; }
   <a class="pv-cta__btn" href="#popup:zayavkapsixolog">Записаться на консультацию <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 </div></section>
 </main>
-<footer class="ftr">
+<footer class="ftr foot">
   <div class="wrap">
-    <a class="ftr__name" href="../">Надежда Хомянина</a>
-    <div class="ftr__grid">
-      <div class="ftr__copy"><b>© Надежда Хомянина, 2026.</b><span>Психолог по профессиональной реализации.</span></div>
-      <div class="social" aria-label="Соцсети"><a href="#" data-todo="vk">ВКонтакте ↗</a><i>|</i><a href="#" data-todo="dzen">Дзен ↗</a><i>|</i><a href="#" data-todo="tenchat">TenChat ↗</a></div>
-      <div class="ftr__legal">
-        <a href="mailto:sch-geisha@yandex.ru">Контактная почта: sch-geisha@yandex.ru</a>
-        <a href="../policy/">Политика конфиденциальности</a>
-        <a href="../personal/">Согласие на обработку персональных данных</a>
-      </div>
-    </div>
-    <p class="ftr__inn">Хомянина Н. Н. · ИНН 620601455499 · Москва и онлайн</p>
+    <p class="foot__row"><b>© Надежда Хомянина, 2026</b> · Психолог по профессиональной реализации</p>
+    <p class="foot__row"><a href="#" data-todo="vk">ВКонтакте</a> · <a href="#" data-todo="dzen">Дзен</a> · <a href="#" data-todo="tenchat">TenChat</a> · <a href="mailto:sch-geisha@yandex.ru">sch-geisha@yandex.ru</a></p>
+    <p class="foot__row"><a href="../policy/">Политика конфиденциальности</a> · <a href="../personal/">Согласие на обработку персональных данных</a></p>
+    <p class="foot__row foot__row--dim">Хомянина Н. Н. · ИНН 620601455499 · Москва и онлайн</p>
   </div>
 </footer>
 <div class="sticky" id="sticky"><a class="btn btn--dark" href="#popup:zayavkapsixolog">Выстроить свою систему</a></div>
