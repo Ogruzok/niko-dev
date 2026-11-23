@@ -108,6 +108,15 @@ a, button, summary, label { -webkit-tap-highlight-color: transparent; }
 .ftr__grid { margin-top: 14px; padding: 20px 0; }
 @media (max-width: 899px) { .ftr { padding-top: 32px; } .ftr, .ftr__copy, .social a, .social i, .ftr__legal a { font-size: 15px; } .ftr__inn { font-size: 13px; } }
 
+/* подвал: компактный, светлый (ТЗ: светло-бежевый фон, графитовый текст) */
+.ftr.foot { background: var(--sand); color: var(--ink-2); border-top: 1px solid var(--line); padding: 22px 0 24px; font-size: 13px; }
+.foot .foot__row { font-size: 13px; line-height: 1.6; margin: 0 0 4px; color: var(--ink-2); }
+.foot .foot__row b { font-weight: 600; color: var(--ink); }
+.foot .foot__row a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--taupe); }
+.foot .foot__row a:hover { color: var(--caramel); }
+.foot .foot__row--dim { color: var(--muted); margin: 0; }
+@media (max-width: 899px) { .ftr.foot { padding: 20px 0 calc(76px + env(safe-area-inset-bottom)); } .foot .foot__row { font-size: 13px; } }
+
 .doc { max-width: 860px; margin: 0 auto; padding: 60px 24px 110px; }
 .doc__crumbs { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 700; color: var(--muted); padding-bottom: 14px; border-bottom: 1px solid var(--ink); margin-bottom: 34px; }
 .doc__crumbs a { color: var(--caramel); text-decoration: none; display: inline-block; padding: 10px 0; }
@@ -153,19 +162,12 @@ a, button, summary, label { -webkit-tap-highlight-color: transparent; }
   <h1>Согласие на обработку персональных данных</h1>
   <div class="doc__text">Я, Пользователь сайта <a href="https://khomyanina.ru">https://khomyanina.ru</a>&nbsp; (далее – Веб-сайт), настоящим свободно, своей волей и в своём интересе даю согласие Хомяниной Надежде Николаевне (ИНН 620601455499, г. Москва, далее – Оператор) на обработку моих персональных данных на следующих условиях, а также на условиях, указанных в Политике в отношении обработки персональных данных Оператора, размещённой по адресу: https://khomyanina.ru/policy.<br />1. Категории обрабатываемых персональных данных: общие.<br />2. Перечень обрабатываемых персональных данных: фамилия, имя, отчество; адрес электронной почты; номер телефона; никнейм и контактные данные в мессенджерах (при указании); данные о действиях на сайте (cookie, IP-адрес, сведения о браузере и устройстве, собираемые средствами веб-аналитики).<br />3. Цель обработки персональных данных: заключение и исполнение договоров с клиентами, предоставление консультаций и юридических услуг.<br />4. Способы обработки персональных данных: автоматизированная и неавтоматизированная (смешанные способы).<br />5. Действия с персональными данными в ходе их обработки: сбор, запись, систематизация, накопление, хранение, уточнение (обновление, изменение), извлечение, использование, передача (предоставление, доступ), обезличивание, блокирование, удаление, уничтожение персональных данных.<br />6. Срок действия согласия: с даты предоставления персональных данных Пользователем до достижения цели их обработки, но не более 5 (пяти) лет, либо до момента отзыва Пользователем своего согласия на обработку персональных данных либо получения Оператором требования о прекращении обработки персональных данных, если иной срок не установлен законодательством Российской Федерации.<br />7. Отзыв согласия: согласие может быть отозвано Пользователем в любое время путём направления Оператору письменного заявления на адрес электронной почты sch-geisha@yandex.com.<br />8. Заявление должно содержать фамилию и имя заявителя и указание на отзыв согласия на обработку персональных данных, предоставленных Оператору.<br />9. Подтверждаю, что на момент предоставления персональных данных мне исполнилось 18 лет.<br />10. Подтверждаю, что ознакомлен(а) с Политикой в отношении обработки персональных данных Оператора и согласен(на) с её условиями.&nbsp;&nbsp;<br /><br /></div>
 </main>
-<footer class="ftr">
+<footer class="ftr foot">
   <div class="wrap">
-    <a class="ftr__name" href="../">Надежда Хомянина</a>
-    <div class="ftr__grid">
-      <div class="ftr__copy"><b>© Надежда Хомянина, 2026.</b><span>Психолог по профессиональной реализации.</span></div>
-      <div class="social" aria-label="Соцсети"><a href="#" data-todo="vk">ВКонтакте ↗</a><i>|</i><a href="#" data-todo="dzen">Дзен ↗</a><i>|</i><a href="#" data-todo="tenchat">TenChat ↗</a></div>
-      <div class="ftr__legal">
-        <a href="mailto:sch-geisha@yandex.ru">Контактная почта: sch-geisha@yandex.ru</a>
-        <a href="../policy/">Политика конфиденциальности</a>
-        <a href="../personal/">Согласие на обработку персональных данных</a>
-      </div>
-    </div>
-    <p class="ftr__inn">Хомянина Н. Н. · ИНН 620601455499 · Москва и онлайн</p>
+    <p class="foot__row"><b>© Надежда Хомянина, 2026</b> · Психолог по профессиональной реализации</p>
+    <p class="foot__row"><a href="#" data-todo="vk">ВКонтакте</a> · <a href="#" data-todo="dzen">Дзен</a> · <a href="#" data-todo="tenchat">TenChat</a> · <a href="mailto:sch-geisha@yandex.ru">sch-geisha@yandex.ru</a></p>
+    <p class="foot__row"><a href="../policy/">Политика конфиденциальности</a> · <a href="../personal/">Согласие на обработку персональных данных</a></p>
+    <p class="foot__row foot__row--dim">Хомянина Н. Н. · ИНН 620601455499 · Москва и онлайн</p>
   </div>
 </footer>
 <div class="sticky" id="sticky"><a class="btn btn--dark" href="#popup:zayavkapsixolog">Выстроить свою систему</a></div>
