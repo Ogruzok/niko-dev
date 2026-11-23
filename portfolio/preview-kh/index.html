@@ -803,25 +803,6 @@ img { -webkit-user-drag: none; }
 .voices__q { font-style: normal; font-weight: 600; }
 .letter cite { font-family: var(--sans); font-size: 16px; font-weight: 700; color: var(--ink); }
 
-/* первый экран */
-.cover__mast { font-weight: 600; }
-.cover__badge { position: absolute; right: 12px; bottom: 12px; z-index: 2; display: flex; align-items: center; gap: 8px; background: var(--espresso); color: var(--ivory); padding: 8px 12px 8px 10px; border-radius: 3px; }
-.cover__badge b { font: 600 30px/1 var(--serif); color: var(--gold); }
-.cover__badge span { font: 600 11px/1.25 var(--sans); letter-spacing: .8px; text-transform: uppercase; }
-.cover__photo, .cover__photo.flat { transform: none; }
-/* визуализация «Психология + Управление = Система» */
-.sysviz { background: var(--espresso); color: var(--ivory); border-radius: 4px; padding: 22px 18px 20px; }
-.sysviz__eq { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px; }
-.sysviz__eq span { font: 600 19px/1 var(--serif); padding: 9px 12px; border: 1px solid rgba(214,179,132,.45); border-radius: 3px; }
-.sysviz__eq .sysviz__res { background: var(--gold); color: var(--espresso); border-color: var(--gold); }
-.sysviz__eq i { font: 300 22px/1 var(--sans); font-style: normal; color: var(--gold); }
-.sysviz__br { flex-basis: 100%; height: 0; }
-@media (min-width: 900px) { .sysviz__br { display: none; } }
-.sysviz__steps { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 22px; position: relative; text-align: center; font: 600 12px/1.3 var(--sans); letter-spacing: 1px; text-transform: uppercase; color: rgba(245,239,230,.8); }
-.sysviz__steps::before { content: ''; position: absolute; left: 16.6%; right: 16.6%; top: 5px; height: 1px; background: rgba(214,179,132,.5); }
-.sysviz__steps li { position: relative; padding-top: 20px; }
-.sysviz__steps li::before { content: ''; position: absolute; left: 50%; top: 0; width: 11px; height: 11px; margin-left: -5.5px; border-radius: 50%; background: var(--espresso); border: 2px solid var(--gold); }
-.sysviz__steps li:last-child::before { background: var(--gold); }
 
 /* «Узнаете себя»: компактнее, каждая карточка своим оттенком и пиктограммой */
 .state { position: relative; }
@@ -892,22 +873,6 @@ img { -webkit-user-drag: none; }
   .h2 + .lead, .h2 + .states__list, .h2 + .fund__grid, .h2 + .posts { margin-top: 18px; }
   .state h3, .ticket h3, .case h3, .post h3, .pop__title { font-size: 22px; line-height: 1.15; }
   body, p, li, .lead, .dossier li, .states__sub, .post p, .qa__a p { font-size: 17px; }
-  /* первый экран: кнопка помещается на первый экран */
-  .cover { padding: 72px 0 34px; }
-  .cover__meta { font-size: 12px; letter-spacing: 1.2px; padding-bottom: 8px; }
-  .cover__mast { font-size: 12vw; margin-top: 8px; line-height: .95; }
-  .cover__grid { margin-top: 10px; gap: 14px; }
-  .cover__photo, .cover__photo.flat { width: 100%; max-width: none; padding: 6px; }
-  .cover__photo img { aspect-ratio: 16 / 10; object-position: center 13%; }
-  .cover__intro { text-align: left; }
-  .cover__over { font-size: 11.5px; letter-spacing: .5px; white-space: nowrap; }
-  .cover h1 { font-size: 30px; line-height: 1.08; margin: 6px 0 8px; }
-  .cover__offer { font-size: 16px; line-height: 1.55; margin: 0 0 16px; text-align: left; }
-  .cover .btn { max-width: none; }
-  .lines { margin-top: 0; }
-  .line { padding: 16px 18px; }
-  .line b { font-size: 21px; }
-  .line span:last-child { font-size: 15.5px; }
   /* состояния компактнее */
   .states__list { gap: 10px; margin-top: 18px; }
   .state, .state:last-child { padding: 18px 18px 18px; }
@@ -978,10 +943,6 @@ img { -webkit-user-drag: none; }
   .next__pts { font-size: 15px; gap: 10px; margin: 20px 0 22px; }
   .next__pts b { font-size: 16px; }
   .next__btn { width: 100%; }
-  .sysviz { padding: 18px 14px 18px; }
-  .sysviz__eq { gap: 8px 8px; }
-  .sysviz__eq span { font-size: 17px; padding: 8px 11px; }
-  .sysviz__steps { font-size: 11px; letter-spacing: .5px; margin-top: 18px; }
   .track { align-items: flex-start; }
   /* подвал */
   .ftr { padding-top: 32px; }
@@ -992,10 +953,6 @@ img { -webkit-user-drag: none; }
 /* ===== компьютер ===== */
 @media (min-width: 900px) {
   .h2, .iv__title { font-size: 48px; line-height: 1.05; }
-  .cover__mast { font-size: clamp(90px, 12vw, 170px); }
-  .cover h1 { font-size: clamp(38px, 3.6vw, 52px); }
-  .sysviz { order: 5; margin-top: 10px; grid-column: 1 / -1; display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: center; padding: 26px 34px; }
-  .sysviz__steps { margin-top: 0; }
   .state__ic { position: absolute; right: 22px; top: 22px; }
   .state h3 { padding-right: 56px; }
   .venn__c, .venn__c--b { width: 360px; }
@@ -1006,6 +963,14 @@ img { -webkit-user-drag: none; }
   .ff b { font-size: 26px; }
   .letter blockquote { font-size: 16.5px; }
 }
+/* подвал: компактный, светлый (ТЗ: светло-бежевый фон, графитовый текст) */
+.ftr.foot { background: var(--sand); color: var(--ink-2); border-top: 1px solid var(--line); padding: 22px 0 24px; font-size: 13px; }
+.foot .foot__row { font-size: 13px; line-height: 1.6; margin: 0 0 4px; color: var(--ink-2); }
+.foot .foot__row b { font-weight: 600; color: var(--ink); }
+.foot .foot__row a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--taupe); }
+.foot .foot__row a:hover { color: var(--caramel); }
+.foot .foot__row--dim { color: var(--muted); margin: 0; }
+@media (max-width: 899px) { .ftr.foot { padding: 20px 0 calc(76px + env(safe-area-inset-bottom)); } .foot .foot__row { font-size: 13px; } }
 </style>
 </head>
 <body>
@@ -1047,17 +1012,13 @@ img { -webkit-user-drag: none; }
     <div class="cover__grid">
       <div class="cover__photo" id="coverPhoto">
         <img src="img/hero-tz.jpg" alt="Надежда Хомянина — психолог по профессиональной реализации" width="1100" height="1365" fetchpriority="high">
-        <div class="cover__badge"><b>15</b><span>лет<br>практики</span></div>
+        <div class="cover__stamp" aria-hidden="true"><span><b>15</b>лет<br>практики</span></div>
       </div>
       <div class="cover__intro">
         <p class="cover__over">Надежда Хомянина • <span style="white-space:nowrap">Экс-Project Manager, MBA</span></p>
         <h1>Психолог по <span class="acc">профессиональной реализации</span></h1>
         <p class="cover__offer">Выстраиваю профессиональную реализацию как управляемый проект: от ясности в&nbsp;ценностях&nbsp;— к&nbsp;устойчивым результатам.</p>
         <a class="btn btn--dark" href="#popup:zayavkapsixolog">Выстроить свою систему <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      </div>
-      <div class="sysviz" role="img" aria-label="Психология плюс управление равно система: ценности, стратегия, действия">
-        <div class="sysviz__eq"><span>Психология</span><i>+</i><span>Управление</span><b class="sysviz__br"></b><i>=</i><span class="sysviz__res">Система</span></div>
-        <ol class="sysviz__steps"><li>Ценности</li><li>Стратегия</li><li>Действия</li></ol>
       </div>
       <div class="lines">
         <div class="line"><span class="pg">✓</span><b>Системный подход</b><span>синтез управления (MBA) и психологии.</span></div>
@@ -1237,10 +1198,9 @@ img { -webkit-user-drag: none; }
   <div class="wrap">
     <h2 class="h2 rv">Публикации</h2>
     <div class="posts">
-      <a class="post rv" href="kto-ty-bez-raboty/"><div class="post__img"><img src="img/kto-ty-bez-raboty-oblozhka.jpg" alt="" width="800" height="600" loading="lazy" decoding="async"></div><h3>Кто ты без работы</h3><p>Кто вы, если не работаете? Разбираемся, почему профессия становится главной опорой и как вернуть себе другие роли и смыслы.</p></a>
-      <a class="post rv" href="cennosti-kak-kompas/"><div class="post__img"><img src="img/cennosti-kak-kompas-oblozhka.jpg" alt="" width="800" height="600" loading="lazy" decoding="async"></div><h3>Ценности как компас</h3><p>Не знаете, куда двигаться? Разбираемся, как ценности становятся внутренней опорой и помогают принимать решения.</p></a>
-      <a class="post rv" href="paradoks-vybora/"><div class="post__img"><img src="img/paradoks-vybora-oblozhka.jpg" alt="" width="800" height="600" loading="lazy" decoding="async"></div><h3>Парадокс выбора</h3><p>Много вариантов, но вы не можете выбрать? Разбираем парадокс выбора: почему изобилие парализует и как принять решение.</p></a>
-    </div>
+      <a class="post rv" href="https://khomyanina.ru/odinochestvo-rukovoditelya"><div class="post__img"><img src="img/odinochestvo-rukovoditelya-oblozhka.jpg" alt="" width="1200" height="630" loading="lazy" decoding="async"></div><h3>Одиночество наверху</h3><p>Почему сильные лидеры остаются одни с проблемами? Синдром железного босса и где искать опору.</p></a>
+<a class="post rv" href="https://khomyanina.ru/smena-professii-posle-40"><div class="post__img"><img src="img/smena-professii-posle-40-oblozhka.jpg" alt="" width="1200" height="630" loading="lazy" decoding="async"></div><h3>Время возможностей</h3><p>Смена профессии после 40: почему сейчас — лучшее время, чтобы всё изменить.</p></a>
+<a class="post rv" href="https://khomyanina.ru/zamenit-li-neyroset-professiyu"><div class="post__img"><img src="img/zamenit-li-neyroset-professiyu-oblozhka.jpg" alt="" width="1200" height="630" loading="lazy" decoding="async"></div><h3>Нейросети не заменят вас</h3><p>Как нейросети меняют работу и почему критическое мышление важнее технологий. Взгляд психолога и управленца.</p></a>    </div>
     <div class="blog__all"><a class="btn btn--line" href="stati/">Все публикации</a></div>
   </div>
 </section>
@@ -1266,19 +1226,12 @@ img { -webkit-user-drag: none; }
 </main>
 
 <!-- 10. Подвал -->
-<footer class="ftr">
+<footer class="ftr foot">
   <div class="wrap">
-    <a class="ftr__name" href="./">Надежда Хомянина</a>
-    <div class="ftr__grid">
-      <div class="ftr__copy"><b>© Надежда Хомянина, 2026.</b>Психолог по профессиональной реализации.</div>
-      <div class="social" aria-label="Соцсети"><a href="#" data-todo="vk">ВКонтакте ↗</a><i>|</i><a href="#" data-todo="dzen">Дзен ↗</a><i>|</i><a href="#" data-todo="tenchat">TenChat ↗</a></div>
-      <div class="ftr__legal">
-        <a href="mailto:sch-geisha@yandex.ru">Контактная почта: sch-geisha@yandex.ru</a>
-        <a href="policy/">Политика конфиденциальности</a>
-        <a href="personal/">Согласие на обработку персональных данных</a>
-      </div>
-    </div>
-    <p class="ftr__inn">Хомянина Н. Н. · ИНН 620601455499 · Москва и онлайн</p>
+    <p class="foot__row"><b>© Надежда Хомянина, 2026</b> · Психолог по профессиональной реализации</p>
+    <p class="foot__row"><a href="#" data-todo="vk">ВКонтакте</a> · <a href="#" data-todo="dzen">Дзен</a> · <a href="#" data-todo="tenchat">TenChat</a> · <a href="mailto:sch-geisha@yandex.ru">sch-geisha@yandex.ru</a></p>
+    <p class="foot__row"><a href="policy/">Политика конфиденциальности</a> · <a href="personal/">Согласие на обработку персональных данных</a></p>
+    <p class="foot__row foot__row--dim">Хомянина Н. Н. · ИНН 620601455499 · Москва и онлайн</p>
   </div>
 </footer>
 
